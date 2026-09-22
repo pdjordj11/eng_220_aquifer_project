@@ -1,1 +1,5 @@
-# eng_220_aquifer_project
+# Cuba Aquifer Project
+# ENG 220 - Team 23
+
+Team Roles:
+
