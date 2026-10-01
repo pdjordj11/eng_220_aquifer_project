@@ -1,4 +1,6 @@
-# Cuba Aquifer Project
+# Beneath the Mesa
+# Assessing Aquifer, Well, and Acequia Water Resources Across Sandoval County, New Mexico
+
 # ENG 220 - Team 23
 
 Team Roles:
