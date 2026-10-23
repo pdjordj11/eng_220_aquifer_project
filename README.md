@@ -56,7 +56,7 @@ The documentation site is built with [MkDocs](https://www.mkdocs.org). Its pages
 2. Preview the site (opens at http://127.0.0.1:8000; press **Ctrl+C** to stop):
 
 ```
-   pip install mkdocs
+   pip install mkdocs mkdocs-cinder
    mkdocs serve
 ```
 

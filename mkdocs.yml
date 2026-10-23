@@ -16,3 +16,6 @@ nav:
   - Findings: findings.md
   - Timeline: timeline.md
   - Team: team.md
+
+theme:
+  name: cinder
