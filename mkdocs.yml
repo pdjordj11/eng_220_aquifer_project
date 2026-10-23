@@ -3,3 +3,16 @@ site_description: Assessing aquifer, well, and acequia water resources across Sa
 site_url: https://pdjordj11.github.io/eng_220_aquifer_project/
 repo_url: https://github.com/pdjordj11/eng_220_aquifer_project
 edit_uri: edit/main/docs/
+
+nav:
+  - Home: index.md
+  - Project stages:
+      - 1. Data collection: data-collection.md
+      - 2. Data cleaning: data-cleaning.md
+      - 3. Analysis and visualizations: analysis.md
+      - 4. Streamlit app: streamlit-app.md
+      - 5. Final report: report.md
+      - 6. Video: video.md
+  - Findings: findings.md
+  - Timeline: timeline.md
+  - Team: team.md

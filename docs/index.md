@@ -33,41 +33,18 @@ The analysis focuses on measurable indicators such as depth to water, water-leve
 8. Where is monitoring coverage strong, and where are the most important data gaps?
 9. Which indicators can be combined into a dashboard that shows water-resource stress without overstating how certain the data are?
 
-## Data
+## How this site is organized
 
-Datasets currently in the repository's `data/` folder:
+The site follows the project's stages, from collecting data to presenting results. Each stage page explains what was done, which files it produced, and who led it.
 
-| File | Contents |
+| Page | What it covers |
 |---|---|
-| `water_flow_data_sandoval_county_sources.csv` | USGS monthly and yearly statistics for 30 monitoring sites in Sandoval County (17 stream gages, 9 wells, 2 canals, and 2 reservoirs), covering streamflow, groundwater levels, suspended sediment, water temperature, and reservoir storage, with records from 1926 to 2026. |
-| `ose_aquifer_test_wells.csv` | New Mexico Office of the State Engineer aquifer-test records, 3,455 statewide and 179 in Sandoval County, including well depth, screened interval, geologic formation, and hydraulic properties such as transmissivity and storativity. |
-
-Other sources the project draws on:
-
-- [USGS San Juan Basin digital aquifer data (ScienceBase)](https://www.sciencebase.gov/catalog/item/5d8e350be4b0c4f70d0cc484)
-- [USGS groundwater-flow model report, WRI 95-4187](https://pubs.usgs.gov/publication/wri954187)
-- [NM Bureau of Geology: San Juan Basin Brackish Water Assessment](https://geoinfo.nmt.edu/resources/water/projects/bwa/sjb/home.html)
-- [New Mexico Office of the State Engineer](https://www.ose.nm.gov/)
-- [National Ground-Water Monitoring Network](https://www.usgs.gov/apps/ngwmn/index.jsp)
-- [Healy Collaborative Groundwater Monitoring Network](https://geoinfo.nmt.edu/resources/water/cgmn/home.cfml)
-- [New Mexico Water Data Catalog](https://catalog.newmexicowaterdata.org/)
-- [NM Interstate Stream Commission: Acequias](https://www.ose.nm.gov/Acequias/isc_acequias.php)
-
-## Deliverables
-
-- An interactive Streamlit dashboard (linked above)
-- This GitHub repository, with reproducible code and documentation
-- A final written report
-- A seven-minute team presentation video
-
-## Team
-
-| Member | Role |
-|---|---|
-| Dylan | Data acquisition and dataset justification |
-| James | Data cleaning and preprocessing |
-| Micah | Analysis code and visualizations |
-| Meckrem | GitHub workflow and the Streamlit app |
-| Petar | Documentation, final report, presentation, and video |
-
-Instructor: Ramiro Jordan
+| [1. Data collection](data-collection.md) | The datasets we use, where they come from, and why we chose them |
+| [2. Data cleaning](data-cleaning.md) | How the raw data is filtered and prepared for analysis |
+| [3. Analysis and visualizations](analysis.md) | The methods and charts used to answer each research question |
+| [4. Streamlit app](streamlit-app.md) | What the interactive dashboard shows and how to run it |
+| [5. Final report](report.md) | The written report and the project proposal |
+| [6. Video](video.md) | The seven-minute team presentation |
+| [Findings](findings.md) | What the data show, and where they are too limited to say |
+| [Timeline](timeline.md) | What was completed at each course checkpoint |
+| [Team](team.md) | Who did what |
