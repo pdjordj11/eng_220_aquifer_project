@@ -32,6 +32,50 @@
 
                 <!-- Expanded navigation -->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="." class="nav-link active" aria-current="page">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Project stages</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="data-collection/" class="dropdown-item">1. Data collection</a>
+</li>
+                                    
+<li>
+    <a href="data-cleaning/" class="dropdown-item">2. Data cleaning</a>
+</li>
+                                    
+<li>
+    <a href="analysis/" class="dropdown-item">3. Analysis and visualizations</a>
+</li>
+                                    
+<li>
+    <a href="streamlit-app/" class="dropdown-item">4. Streamlit app</a>
+</li>
+                                    
+<li>
+    <a href="report/" class="dropdown-item">5. Final report</a>
+</li>
+                                    
+<li>
+    <a href="video/" class="dropdown-item">6. Video</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="findings/" class="nav-link">Findings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="timeline/" class="nav-link">Timeline</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="team/" class="nav-link">Team</a>
+                            </li>
+                        </ul>
 
                     <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
@@ -39,6 +83,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="data-collection/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a href="https://github.com/pdjordj11/eng_220_aquifer_project/edit/main/docs/index.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
                             </li>
@@ -74,15 +128,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#data" class="nav-link">Data</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#deliverables" class="nav-link">Deliverables</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#team" class="nav-link">Team</a>
+            <li class="nav-item" data-bs-level="2"><a href="#how-this-site-is-organized" class="nav-link">How this site is organized</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -119,76 +165,54 @@
 <li>Where is monitoring coverage strong, and where are the most important data gaps?</li>
 <li>Which indicators can be combined into a dashboard that shows water-resource stress without overstating how certain the data are?</li>
 </ol>
-<h2 id="data">Data</h2>
-<p>Datasets currently in the repository's <code>data/</code> folder:</p>
+<h2 id="how-this-site-is-organized">How this site is organized</h2>
+<p>The site follows the project's stages, from collecting data to presenting results. Each stage page explains what was done, which files it produced, and who led it.</p>
 <table>
 <thead>
 <tr>
-<th>File</th>
-<th>Contents</th>
+<th>Page</th>
+<th>What it covers</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>water_flow_data_sandoval_county_sources.csv</code></td>
-<td>USGS monthly and yearly statistics for 30 monitoring sites in Sandoval County (17 stream gages, 9 wells, 2 canals, and 2 reservoirs), covering streamflow, groundwater levels, suspended sediment, water temperature, and reservoir storage, with records from 1926 to 2026.</td>
+<td><a href="data-collection/">1. Data collection</a></td>
+<td>The datasets we use, where they come from, and why we chose them</td>
 </tr>
 <tr>
-<td><code>ose_aquifer_test_wells.csv</code></td>
-<td>New Mexico Office of the State Engineer aquifer-test records, 3,455 statewide and 179 in Sandoval County, including well depth, screened interval, geologic formation, and hydraulic properties such as transmissivity and storativity.</td>
+<td><a href="data-cleaning/">2. Data cleaning</a></td>
+<td>How the raw data is filtered and prepared for analysis</td>
+</tr>
+<tr>
+<td><a href="analysis/">3. Analysis and visualizations</a></td>
+<td>The methods and charts used to answer each research question</td>
+</tr>
+<tr>
+<td><a href="streamlit-app/">4. Streamlit app</a></td>
+<td>What the interactive dashboard shows and how to run it</td>
+</tr>
+<tr>
+<td><a href="report/">5. Final report</a></td>
+<td>The written report and the project proposal</td>
+</tr>
+<tr>
+<td><a href="video/">6. Video</a></td>
+<td>The seven-minute team presentation</td>
+</tr>
+<tr>
+<td><a href="findings/">Findings</a></td>
+<td>What the data show, and where they are too limited to say</td>
+</tr>
+<tr>
+<td><a href="timeline/">Timeline</a></td>
+<td>What was completed at each course checkpoint</td>
+</tr>
+<tr>
+<td><a href="team/">Team</a></td>
+<td>Who did what</td>
 </tr>
 </tbody>
-</table>
-<p>Other sources the project draws on:</p>
-<ul>
-<li><a href="https://www.sciencebase.gov/catalog/item/5d8e350be4b0c4f70d0cc484">USGS San Juan Basin digital aquifer data (ScienceBase)</a></li>
-<li><a href="https://pubs.usgs.gov/publication/wri954187">USGS groundwater-flow model report, WRI 95-4187</a></li>
-<li><a href="https://geoinfo.nmt.edu/resources/water/projects/bwa/sjb/home.html">NM Bureau of Geology: San Juan Basin Brackish Water Assessment</a></li>
-<li><a href="https://www.ose.nm.gov/">New Mexico Office of the State Engineer</a></li>
-<li><a href="https://www.usgs.gov/apps/ngwmn/index.jsp">National Ground-Water Monitoring Network</a></li>
-<li><a href="https://geoinfo.nmt.edu/resources/water/cgmn/home.cfml">Healy Collaborative Groundwater Monitoring Network</a></li>
-<li><a href="https://catalog.newmexicowaterdata.org/">New Mexico Water Data Catalog</a></li>
-<li><a href="https://www.ose.nm.gov/Acequias/isc_acequias.php">NM Interstate Stream Commission: Acequias</a></li>
-</ul>
-<h2 id="deliverables">Deliverables</h2>
-<ul>
-<li>An interactive Streamlit dashboard (linked above)</li>
-<li>This GitHub repository, with reproducible code and documentation</li>
-<li>A final written report</li>
-<li>A seven-minute team presentation video</li>
-</ul>
-<h2 id="team">Team</h2>
-<table>
-<thead>
-<tr>
-<th>Member</th>
-<th>Role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Dylan</td>
-<td>Data acquisition and dataset justification</td>
-</tr>
-<tr>
-<td>James</td>
-<td>Data cleaning and preprocessing</td>
-</tr>
-<tr>
-<td>Micah</td>
-<td>Analysis code and visualizations</td>
-</tr>
-<tr>
-<td>Meckrem</td>
-<td>GitHub workflow and the Streamlit app</td>
-</tr>
-<tr>
-<td>Petar</td>
-<td>Documentation, final report, presentation, and video</td>
-</tr>
-</tbody>
-</table>
-<p>Instructor: Ramiro Jordan</p></div>
+</table></div>
             </div>
         </div>
 
@@ -270,5 +294,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-10-23 16:47:17.742509+00:00
+Build Date UTC : 2026-10-23 17:29:14.111475+00:00
 -->
