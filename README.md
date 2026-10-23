@@ -73,7 +73,8 @@ The documentation site is built with [MkDocs](https://www.mkdocs.org). Its pages
 ## Project Structure
 
 ```
-ProjectApp.py        Streamlit app (do not rename: the live app runs this file)
+ProjectApp.py        Streamlit app entry point and sidebar menu (do not rename: the live app runs this file)
+app_pages/           One file per page of the Streamlit app
 requirements.txt     Python packages the live app installs
 mkdocs.yml           Documentation site settings
 data/                Datasets
@@ -82,14 +83,27 @@ project_notes/       Proposal, deadlines, and notes
 .devcontainer/       Codespaces setup
 ```
 
+## Adding a Page to the App
+
+Each page of the app is its own file in `app_pages/`, and `ProjectApp.py` lists them in the sidebar menu.
+
+1. Create a new file in `app_pages/`, for example `app_pages/my_page.py`. Don't call `st.set_page_config` in it; `ProjectApp.py` already does.
+2. Add a line for it to the list in `ProjectApp.py`:
+
+```python
+st.Page("app_pages/my_page.py", title="My page", icon=":material/insights:"),
+```
+
+Icons are optional. Any name from [Google's Material Symbols](https://fonts.google.com/icons) works.
+
 ## Loading Data in the App
 
-Build file paths from the app's location so they work in Codespaces, on your computer, and on the live app:
+Build file paths from the file's location so they work in Codespaces, on your computer, and on the live app. Pages live one folder down in `app_pages/`, so go up one level to reach `data/`:
 
 ```python
 from pathlib import Path
 import pandas as pd
 
-DATA = Path(__file__).parent / "data"
+DATA = Path(__file__).resolve().parents[1] / "data"
 wells = pd.read_csv(DATA / "ose_aquifer_test_wells.csv")
 ```
