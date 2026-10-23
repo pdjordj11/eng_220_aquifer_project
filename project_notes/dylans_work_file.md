@@ -22,4 +22,4 @@ https://geoinfo.nmt.edu/resources/water/cgmn/home.cfml
 https://catalog.newmexicowaterdata.org/
 
 • New Mexico Interstate Stream Commission — Acequias/Community Ditches.
-https://www.ose.nm.gov/Acequias/isc acequias.php
+https://www.ose.nm.gov/Acequias/isc_acequias.php
