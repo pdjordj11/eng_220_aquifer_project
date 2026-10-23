@@ -50,32 +50,35 @@ The live app updates within about a minute.
 
 ## Updating the Documentation Site
 
-The documentation site is built with [MkDocs](https://www.mkdocs.org). Its pages are the Markdown files in `mk_documentation/docs/`, and the site settings are in `mk_documentation/mkdocs.yml`.
+The documentation site is built with [MkDocs](https://www.mkdocs.org). Its pages are the Markdown files in `docs/`, and the site settings are in `mkdocs.yml`.
 
-1. Edit or add `.md` files in `mk_documentation/docs/`.
+1. Edit or add `.md` files in `docs/`.
 2. Preview the site (opens at http://127.0.0.1:8000; press **Ctrl+C** to stop):
+
 ```
    pip install mkdocs
-   cd mk_documentation
    mkdocs serve
 ```
-3. Publish it to the documentation site, still inside `mk_documentation`:
+
+3. Publish it to the documentation site:
+
 ```
    mkdocs gh-deploy
-   cd ..
 ```
+
 4. Commit and push your Markdown changes to `main` as usual, so the source stays in sync with the site.
 
-`mkdocs gh-deploy` builds the site and pushes it to the `gh-pages` branch, which is what the documentation link serves. The built `mk_documentation/site/` folder is listed in `.gitignore`, so it is never committed to `main`.
+`mkdocs gh-deploy` builds the site and pushes it to the `gh-pages` branch, which is what the documentation link serves. The built `site/` folder is listed in `.gitignore`, so it is never committed to `main`.
 
 ## Project Structure
 
 ```
 ProjectApp.py        Streamlit app (do not rename: the live app runs this file)
 requirements.txt     Python packages the live app installs
+mkdocs.yml           Documentation site settings
 data/                Datasets
-docs/                Proposal, deadlines, and notes
-mk_documentation/    MkDocs documentation site (pages in mk_documentation/docs/)
+docs/                Documentation site pages (MkDocs)
+project_notes/       Proposal, deadlines, and notes
 .devcontainer/       Codespaces setup
 ```
 
