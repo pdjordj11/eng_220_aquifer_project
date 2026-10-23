@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 from numpy.random import default_rng as rng
 
+
 st.title("Aquifer Project")
 
 hist_data = [
