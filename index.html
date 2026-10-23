@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
+        <meta name="description" content="Assessing aquifer, well, and acequia water resources across Sandoval County, New Mexico">
         
-        
+        <link rel="canonical" href="https://pdjordj11.github.io/eng_220_aquifer_project/">
         <link rel="shortcut icon" href="img/favicon.ico">
         <title>Beneath the Mesa</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -25,6 +25,10 @@
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" href=".">Beneath the Mesa</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
@@ -35,6 +39,9 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/pdjordj11/eng_220_aquifer_project/edit/main/docs/index.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -53,13 +60,29 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#welcome-to-mkdocs" class="nav-link">Welcome to MkDocs</a>
+            <li class="nav-item" data-bs-level="1"><a href="#beneath-the-mesa" class="nav-link">Beneath the Mesa</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#commands" class="nav-link">Commands</a>
+            <li class="nav-item" data-bs-level="2"><a href="#about-the-project" class="nav-link">About the project</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#project-layout" class="nav-link">Project layout</a>
+            <li class="nav-item" data-bs-level="2"><a href="#approach" class="nav-link">Approach</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#research-questions" class="nav-link">Research questions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#data" class="nav-link">Data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#deliverables" class="nav-link">Deliverables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#team" class="nav-link">Team</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -70,21 +93,102 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+<h1 id="beneath-the-mesa">Beneath the Mesa</h1>
+<p><strong>Assessing Aquifer, Well, and Acequia Water Resources Across Sandoval County, New Mexico</strong></p>
+<p>ENG 220 · Team 23</p>
+<p><a href="https://eng220aquiferproject.streamlit.app/">Open the live app</a> · <a href="https://github.com/pdjordj11/eng_220_aquifer_project">View the code on GitHub</a></p>
+<h2 id="about-the-project">About the project</h2>
+<p>Water scarcity is a persistent challenge across New Mexico. Sandoval County spans several hydrogeologic settings, and its communities depend on a mix of groundwater wells, surface water, and acequia irrigation systems.</p>
+<p>This project evaluates the condition and long-term viability of those water resources across the county, with Cuba, New Mexico, on the eastern edge of the San Juan Basin, as a focused case study. The project is motivated by concern about declining groundwater near Cuba, but rather than assume how severe that decline is or what is causing it, we test what the available public data actually show.</p>
+<h2 id="approach">Approach</h2>
+<p>The study works at two levels:</p>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
+<li><strong>County-wide screening.</strong> Map and compare aquifers, wells, water levels, water quality, and acequia and surface-water features across Sandoval County. Because the county crosses several geologic regions, comparisons are grouped by region or aquifer system instead of treating the county as one uniform aquifer.</li>
+<li><strong>Cuba case study.</strong> A closer look at the Ojo Alamo Sandstone and San Jose Formation near Cuba, using San Juan Basin aquifer datasets alongside nearby well, water-level, and water-quality records.</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre></div>
+<p>The analysis focuses on measurable indicators such as depth to water, water-level change over time, well depth, aquifer unit, and salinity, rather than a full hydrologic model. Where records are sparse, the results say so instead of filling the gaps.</p>
+<h2 id="research-questions">Research questions</h2>
+<ol>
+<li>How do groundwater levels vary across Sandoval County, and which areas show sustained decline, stability, or recovery?</li>
+<li>What do well records show about well depth, depth to water, and the aquifer units that communities rely on?</li>
+<li>Do the available data support the concern that Cuba's main groundwater source is approaching severe depletion?</li>
+<li>How do the Ojo Alamo Sandstone and San Jose Formation compare near Cuba in extent, thickness, hydraulic properties, water levels, and water quality?</li>
+<li>How does groundwater quality, including salinity, vary across the county and near Cuba?</li>
+<li>Where are acequias located, what surface water do they depend on, and which communities do they serve?</li>
+<li>Do changes in groundwater levels line up with nearby surface-water or acequia conditions, or are the records too limited to tell?</li>
+<li>Where is monitoring coverage strong, and where are the most important data gaps?</li>
+<li>Which indicators can be combined into a dashboard that shows water-resource stress without overstating how certain the data are?</li>
+</ol>
+<h2 id="data">Data</h2>
+<p>Datasets currently in the repository's <code>data/</code> folder:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>water_flow_data_sandoval_county_sources.csv</code></td>
+<td>USGS monthly and yearly statistics for 30 monitoring sites in Sandoval County (17 stream gages, 9 wells, 2 canals, and 2 reservoirs), covering streamflow, groundwater levels, suspended sediment, water temperature, and reservoir storage, with records from 1926 to 2026.</td>
+</tr>
+<tr>
+<td><code>ose_aquifer_test_wells.csv</code></td>
+<td>New Mexico Office of the State Engineer aquifer-test records, 3,455 statewide and 179 in Sandoval County, including well depth, screened interval, geologic formation, and hydraulic properties such as transmissivity and storativity.</td>
+</tr>
+</tbody>
+</table>
+<p>Other sources the project draws on:</p>
+<ul>
+<li><a href="https://www.sciencebase.gov/catalog/item/5d8e350be4b0c4f70d0cc484">USGS San Juan Basin digital aquifer data (ScienceBase)</a></li>
+<li><a href="https://pubs.usgs.gov/publication/wri954187">USGS groundwater-flow model report, WRI 95-4187</a></li>
+<li><a href="https://geoinfo.nmt.edu/resources/water/projects/bwa/sjb/home.html">NM Bureau of Geology: San Juan Basin Brackish Water Assessment</a></li>
+<li><a href="https://www.ose.nm.gov/">New Mexico Office of the State Engineer</a></li>
+<li><a href="https://www.usgs.gov/apps/ngwmn/index.jsp">National Ground-Water Monitoring Network</a></li>
+<li><a href="https://geoinfo.nmt.edu/resources/water/cgmn/home.cfml">Healy Collaborative Groundwater Monitoring Network</a></li>
+<li><a href="https://catalog.newmexicowaterdata.org/">New Mexico Water Data Catalog</a></li>
+<li><a href="https://www.ose.nm.gov/Acequias/isc_acequias.php">NM Interstate Stream Commission: Acequias</a></li>
+</ul>
+<h2 id="deliverables">Deliverables</h2>
+<ul>
+<li>An interactive Streamlit dashboard (linked above)</li>
+<li>This GitHub repository, with reproducible code and documentation</li>
+<li>A final written report</li>
+<li>A seven-minute team presentation video</li>
+</ul>
+<h2 id="team">Team</h2>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dylan</td>
+<td>Data acquisition and dataset justification</td>
+</tr>
+<tr>
+<td>James</td>
+<td>Data cleaning and preprocessing</td>
+</tr>
+<tr>
+<td>Micah</td>
+<td>Analysis code and visualizations</td>
+</tr>
+<tr>
+<td>Meckrem</td>
+<td>GitHub workflow and the Streamlit app</td>
+</tr>
+<tr>
+<td>Petar</td>
+<td>Documentation, final report, presentation, and video</td>
+</tr>
+</tbody>
+</table>
+<p>Instructor: Ramiro Jordan</p></div>
             </div>
         </div>
 
@@ -166,5 +270,5 @@ docs/
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-10-23 01:50:52.953197+00:00
+Build Date UTC : 2026-10-23 16:47:17.742509+00:00
 -->
