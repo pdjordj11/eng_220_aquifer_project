@@ -1,6 +1,6 @@
 # 1. Data collection
 
-**Lead:** Dylan
+**Lead:** Dylan Gonzales
 
 This stage covers finding public datasets that can answer the [research questions](index.md#research-questions), downloading them, and recording where each one comes from.
 
@@ -10,9 +10,13 @@ This stage covers finding public datasets that can answer the [research question
 
 USGS monthly and yearly statistics for 30 monitoring sites in Sandoval County (17 stream gages, 9 wells, 2 canals, and 2 reservoirs), with records from 1926 to 2026. Covers streamflow, depth to groundwater, reservoir storage, suspended sediment, water temperature, and water-quality measures: specific conductance, dissolved oxygen, pH, and turbidity.
 
+**Source:** *To be added: link to the page this file was downloaded from.*
+
 ### `ose_aquifer_test_wells.csv`
 
 New Mexico Office of the State Engineer aquifer-test records, 3,455 statewide and 179 in Sandoval County, including well depth, screened interval, geologic formation, and hydraulic properties such as transmissivity and storativity.
+
+**Source:** *To be added: link to the page this file was downloaded from.*
 
 ## Why these datasets
 

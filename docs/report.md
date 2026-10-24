@@ -1,6 +1,6 @@
 # 5. Final report
 
-**Lead:** Petar
+**Lead:** Petar Djordjevic
 
 The final written report will be posted here when it's complete.
 

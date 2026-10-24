@@ -3,15 +3,15 @@
 
 **ENG 220 – Team 23**
 
-**[Live app](https://eng220aquiferproject.streamlit.app/)** | **[Documentation site](https://pdjordj11.github.io/eng_220_aquifer_project/)**
+**[Live app](https://eng220aquiferproject.streamlit.app/)** | **[Documentation site](https://pdjordj11.github.io/eng_220_aquifer_project/)** | **[Slides and video](https://pdjordj11.github.io/eng_220_aquifer_project/presentation/)**
 
 ## Team Roles
 
-- **Dylan:** Data acquisition and dataset justification.
-- **James:** Data cleaning and preprocessing.
-- **Micah:** Writing analysis code and producing visualizations.
-- **Meckrem:** Managing GitHub workflow and building the Streamlit application.
-- **Petar:** Video editing; building the PowerPoint presentation; writing documentation and the final project report; assisting other members as needed.
+- **Dylan Gonzales:** Data acquisition and dataset justification.
+- **James Wanueka:** Data cleaning and preprocessing.
+- **Micah Watkins:** Writing analysis code and producing visualizations.
+- **Meckrem Yousef:** Managing GitHub workflow and building the Streamlit application.
+- **Petar Djordjevic (project manager):** Video editing; building the PowerPoint presentation; writing documentation and the final project report; assisting other members as needed.
 
 ## Running the App
 
@@ -79,6 +79,7 @@ requirements.txt     Python packages the live app installs
 mkdocs.yml           Documentation site settings
 data/                Datasets
 docs/                Documentation site pages (MkDocs)
+docs/files/          Presentation slides and other downloads
 project_notes/       Proposal, deadlines, and notes
 .devcontainer/       Codespaces setup
 ```

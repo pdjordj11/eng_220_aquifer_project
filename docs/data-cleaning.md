@@ -1,6 +1,6 @@
 # 2. Data cleaning
 
-**Lead:** James
+**Lead:** James Wanueka
 
 This stage turns the raw downloads into tables the analysis code can use directly.
 

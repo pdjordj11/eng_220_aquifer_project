@@ -21,4 +21,4 @@ What the team completed at each course checkpoint.
 
 ## Final · Mon, Nov 30
 
-*Upcoming:* final report, presentation video, and completed app.
+*Upcoming:* final report, presentation slides and video, and completed app.

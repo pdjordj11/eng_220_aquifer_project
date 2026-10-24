@@ -1,6 +1,6 @@
 # 4. Streamlit app
 
-**Lead:** Meckrem
+**Lead:** Meckrem Yousef
 
 [Open the live app](https://eng220aquiferproject.streamlit.app/)
 

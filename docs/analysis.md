@@ -1,6 +1,6 @@
 # 3. Analysis and visualizations
 
-**Lead:** Micah
+**Lead:** Micah Watkins
 
 This stage answers the [research questions](index.md#research-questions) with analysis code and charts.
 
