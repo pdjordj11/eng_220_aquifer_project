@@ -78,7 +78,9 @@ ProjectApp.py        Streamlit app entry point and sidebar menu (do not rename: 
 app_pages/           One file per page of the Streamlit app
 requirements.txt     Python packages the live app installs
 mkdocs.yml           Documentation site settings
-data/                Datasets
+data/                Raw datasets as downloaded (never edited)
+data/clean/          Cleaned datasets, made by the scripts in cleaning/
+cleaning/            Data cleaning scripts
 docs/                Documentation site pages (MkDocs)
 docs/files/          Presentation slides and other downloads
 project_notes/       Proposal, deadlines, and notes
@@ -100,12 +102,12 @@ Icons are optional. Any name from [Google's Material Symbols](https://fonts.goog
 
 ## Loading Data in the App
 
-Build file paths from the file's location so they work in Codespaces, on your computer, and on the live app. Pages live one folder down in `app_pages/`, so go up one level to reach `data/`:
+Build file paths from the file's location so they work in Codespaces, on your computer, and on the live app. Pages live one folder down in `app_pages/`, so go up one level to reach `data/`. Load the cleaned files in `data/clean/`, not the raw downloads:
 
 ```python
 from pathlib import Path
 import pandas as pd
 
-DATA = Path(__file__).resolve().parents[1] / "data"
-wells = pd.read_csv(DATA / "ose_aquifer_test_wells.csv")
+DATA = Path(__file__).resolve().parents[1] / "data" / "clean"
+levels = pd.read_csv(DATA / "groundwater_levels_monthly.csv")
 ```
