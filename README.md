@@ -7,11 +7,12 @@
 
 ## Team Roles
 
+- **Petar Djordjevic (Prime Minister):** Video editing; building the PowerPoint presentation; writing documentation and the final project report; assisting other members as needed.
 - **Dylan Gonzales:** Data acquisition and dataset justification.
 - **James Wanueka:** Data cleaning and preprocessing.
 - **Micah Watkins:** Writing analysis code and producing visualizations.
 - **Meckrem Yousef:** Managing GitHub workflow and building the Streamlit application.
-- **Petar Djordjevic (project manager):** Video editing; building the PowerPoint presentation; writing documentation and the final project report; assisting other members as needed.
+
 
 ## Running the App
 
