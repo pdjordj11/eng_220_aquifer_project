@@ -16,11 +16,13 @@ st.write(
     "On a phone, tap the **»** button at the top left to open it."
 )
 
-col1, col2, _ = st.columns([1, 1, 2])
+col1, col2, col3, _ = st.columns([1, 1, 1, 1])
 with col1:
     st.link_button("Project documentation", "https://pdjordj11.github.io/eng_220_aquifer_project/")
 with col2:
     st.link_button("Code on GitHub", "https://github.com/pdjordj11/eng_220_aquifer_project")
+with col3:
+    st.link_button("Slides and video", "https://pdjordj11.github.io/eng_220_aquifer_project/presentation/")
 
 with st.expander("Research questions"):
     st.markdown(

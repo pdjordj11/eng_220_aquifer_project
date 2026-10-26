@@ -11,6 +11,10 @@ The slides are a working draft and will be updated as the team fills them in.
 - [View the slides (PDF)](files/beneath_the_mesa_slides.pdf)
 - [Download the slides (PowerPoint)](files/beneath_the_mesa_slides.pptx)
 
+To update them, save the new version over `docs/files/beneath_the_mesa_slides.pptx`. Then export the PDF from PowerPoint with **File → Export** as `docs/files/beneath_the_mesa_slides.pdf`. Don't use Print to PDF, which drops the links on the last slide. Keep both file names the same so the links on this page keep working.
+
+Every team member must submit their own copy of the .pptx on Canvas; group submissions don't count.
+
 ## Outline
 
 1. **Title:** project title and the full names of all team members
