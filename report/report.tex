@@ -1,0 +1,419 @@
+% =====================================================================
+%  Beneath the Mesa -- ENG 220 Project Report (Team 23)
+%  Two-column report template styled to match the project proposal:
+%  Palatino (URW Palladio) text, navy headings, blue rules and header.
+%
+%  Build:  pdflatex report -> bibtex report -> pdflatex report (x2)
+%          (or `latexmk -pdf report.tex`; Overleaf does this automatically)
+%
+%  Orange [notes] mark what still needs to be written.
+%  Dashed boxes mark figures that still need to be made.
+% =====================================================================
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+% ---------------------------------------------------------------------
+%  Switches
+% ---------------------------------------------------------------------
+\newif\ifdraftnotes \draftnotestrue   % \draftnotesfalse hides every [orange note]
+\newif\ifcoverpage  \coverpagefalse   % \coverpagetrue adds a proposal-style cover page
+\newif\ifroughdraft \roughdrafttrue    % \roughdraftfalse removes the red ROUGH DRAFT stamp
+
+% ---------------------------------------------------------------------
+%  Fonts and text
+% ---------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}                 % URW Palladio, the proposal's typeface
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath}
+
+% ---------------------------------------------------------------------
+%  Page layout
+% ---------------------------------------------------------------------
+\usepackage[letterpaper,top=0.8in,bottom=0.85in,left=0.75in,right=0.75in,
+            columnsep=0.28in,headheight=20pt,headsep=8pt,footskip=26pt]{geometry}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0pt}
+
+% ---------------------------------------------------------------------
+%  Colors (sampled from the proposal PDF)
+% ---------------------------------------------------------------------
+\usepackage{xcolor}
+\definecolor{titleblue}{RGB}{23,54,93}     % #17365D  headings, title
+\definecolor{accentblue}{RGB}{54,95,145}   % #365F91  rules, header, links
+\definecolor{tintblue}{RGB}{237,241,247}   % light panel fill
+\definecolor{draftorange}{RGB}{190,84,20}  % draft notes only
+\definecolor{draftred}{RGB}{192,0,0}       % ROUGH DRAFT stamp
+
+% ---------------------------------------------------------------------
+%  Headings
+% ---------------------------------------------------------------------
+\usepackage{titlesec}
+\usepackage{needspace}
+\usepackage{etoolbox}
+\titleformat{\section}{\color{titleblue}\large\bfseries}{\thesection}{0.55em}{}
+  [{\color{accentblue}\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{2.0ex plus 0.6ex minus 0.3ex}{1.0ex}
+\titleformat{\subsection}{\color{accentblue}\normalsize\bfseries}{\thesubsection}{0.55em}{}
+\titlespacing*{\subsection}{0pt}{1.4ex plus 0.4ex minus 0.2ex}{0.5ex}
+\titleformat{\subsubsection}[runin]{\normalsize\bfseries\itshape}{}{0pt}{}[.]
+\titlespacing*{\subsubsection}{0pt}{1.0ex plus 0.3ex}{0.6em}
+\pretocmd{\section}{\Needspace{4\baselineskip}}{}{}       % keep headings with their text
+\pretocmd{\subsection}{\Needspace{3\baselineskip}}{}{}
+
+% ---------------------------------------------------------------------
+%  Running header and footer (same as the proposal)
+% ---------------------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{accentblue}Project Report}
+\fancyhead[R]{\small\color{accentblue}Aquifer, Well \& Acequia Resources: Sandoval County, NM}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{accentblue}\leaders\hrule height\headrulewidth\hfill}}
+
+\fancypagestyle{firstpage}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[L]{\footnotesize\color{accentblue}ENG 220 Project Report \,\textbullet\, Team 23 \,\textbullet\, \reportstatus}%
+  \fancyfoot[R]{\small\thepage}%
+}
+
+% ---------------------------------------------------------------------
+%  Lists, tables, figures, captions
+% ---------------------------------------------------------------------
+\usepackage{enumitem}
+\setlist{itemsep=1pt,topsep=3pt,parsep=0pt}
+\setlist[itemize]{leftmargin=1.2em,label={\color{accentblue}\textbullet}}
+\usepackage{booktabs,tabularx,array}
+\renewcommand{\arraystretch}{1.12}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{caption}
+\captionsetup{font=small,labelfont={bf,color=titleblue},labelsep=period,justification=justified}
+\captionsetup[table]{position=top,skip=4pt}  % for tables you add later
+\usepackage{tikz}
+\usepackage{stfloats}                 % lets full-width figures sit at the page bottom too
+
+% ---------------------------------------------------------------------
+%  References and links
+% ---------------------------------------------------------------------
+\usepackage[round,authoryear]{natbib}
+\setlength{\bibsep}{2.5pt}
+\renewcommand{\bibfont}{\small\raggedright}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=accentblue,citecolor=accentblue,urlcolor=accentblue,
+            pdftitle={Beneath the Mesa: Aquifer, Well, and Acequia Water Resources Across Sandoval County, New Mexico},
+            pdfauthor={Djordjevic, Gonzales, Wanueka, Watkins, Yousef}]{hyperref}
+\urlstyle{same}
+
+% ---------------------------------------------------------------------
+%  Draft helpers
+% ---------------------------------------------------------------------
+\newcommand{\reportstatus}{\ifroughdraft Rough draft, October 25, 2026\else Final, November 30, 2026\fi}
+% Red stamp shown on page 1 and the cover page while \roughdrafttrue
+\newcommand{\draftstamp}[1][\large]{\ifroughdraft%
+  \tikz\node[draw=draftred,line width=1.1pt,rounded corners=2pt,inner xsep=9pt,inner ysep=4pt,
+    text=draftred,font=#1\bfseries]{\textls[180]{ROUGH DRAFT}};\fi}
+\newcommand{\draftnote}[1]{\ifdraftnotes{\color{draftorange}\itshape[#1]}\fi}
+% Dashed box that stands in for a figure that does not exist yet.
+%   \figplaceholder[height]{what the figure will show}
+% When the figure is ready, save it in figures/ and replace the
+% placeholder with:  \includegraphics[width=\linewidth]{file-name}
+\newcommand{\figplaceholder}[2][1.8in]{%
+  \begin{tikzpicture}
+    \draw[accentblue!70,dashed,line width=0.6pt,fill=tintblue,rounded corners=2pt]
+      (0,0) rectangle (\linewidth,#1);
+    \node[text width=0.82\linewidth,align=center,font=\small\itshape,text=accentblue]
+      at (0.5\linewidth,0.5*#1) {#2};
+  \end{tikzpicture}}
+\newcommand{\infohead}[1]{{\color{titleblue}\footnotesize\bfseries\MakeUppercase{#1}}\par\vspace{2pt}}
+
+% =====================================================================
+\begin{document}
+
+% ---------------------------------------------------------------------
+%  Optional cover page (same layout as the proposal cover)
+% ---------------------------------------------------------------------
+\ifcoverpage
+\begin{titlepage}
+  \centering
+  \vspace*{1.6in}
+  {\color{accentblue}\rule{\textwidth}{0.8pt}}\par\vspace{1.4em}
+  {\color{titleblue}\fontsize{24}{29}\selectfont\bfseries Beneath the Mesa\par}
+  \vspace{0.9em}
+  {\color{accentblue}\fontsize{17}{22}\selectfont Assessing Aquifer, Well, and Acequia Water\\
+    Resources Across Sandoval County, New Mexico\par}
+  \vspace{1.3em}
+  {\color{accentblue}\rule{\textwidth}{0.8pt}}\par\vspace{1.6em}
+  {\itshape A County-Scale Screening Study with Cuba, New Mexico as a Focus Area\par}
+  \vspace{1.3in}
+  {\color{titleblue}\large\bfseries Project Report\par}
+  \ifroughdraft\vspace{1.2em}\draftstamp[\Large]\par\vspace{-0.4in}\fi
+  \vspace{1.2in}
+  \begin{tabular}{@{}r@{\hspace{0.8em}}l@{}}
+    \textbf{Course:}     & ENG 220 \\
+    \textbf{Instructor:} & Ramiro Jordan \\
+    \textbf{Team:}       & \#23 Petar Djordjevic, Dylan Gonzales, James Wanueka,\\
+                         & \phantom{\#23 }Micah Watkins, Meckrem Yousef \\
+    \textbf{Date:}       & \ifroughdraft October 25, 2026 (rough draft)\else November 30, 2026\fi \\
+  \end{tabular}
+  \vfill
+\end{titlepage}
+\fi
+
+% ---------------------------------------------------------------------
+%  Title block and abstract (full width)
+% ---------------------------------------------------------------------
+\twocolumn[{%
+\begin{center}
+  \ifroughdraft\vspace*{-1.5ex}\draftstamp\par\vspace{1.4ex}\fi
+  {\color{accentblue}\rule{\textwidth}{0.8pt}}\par\vspace{0.9ex}
+  {\color{titleblue}\fontsize{22}{26}\selectfont\bfseries Beneath the Mesa\par}
+  \vspace{0.7ex}
+  {\color{accentblue}\fontsize{14.5}{18}\selectfont Assessing Aquifer, Well, and Acequia Water Resources\\
+    Across Sandoval County, New Mexico\par}
+  \vspace{0.9ex}
+  {\color{accentblue}\rule{\textwidth}{0.8pt}}\par\vspace{0.9ex}
+  {\itshape A County-Scale Screening Study with Cuba, New Mexico as a Focus Area\par}
+  \vspace{2.0ex}
+  {\large Petar Djordjevic, Dylan Gonzales, James Wanueka, Micah Watkins, and Meckrem Yousef\par}
+  \vspace{0.6ex}
+  {\small ENG 220, Team 23 \,\textbullet\, Instructor: Ramiro Jordan\par}
+\end{center}
+\vspace{1.2ex}
+{\color{accentblue}\rule{\textwidth}{0.4pt}}\par\vspace{1.4ex}
+\noindent
+\begin{minipage}[t]{0.25\textwidth}
+  \raggedright\footnotesize
+  \infohead{Report info}
+  \ifroughdraft Status: {\color{draftred}\bfseries Rough draft}\\
+  Date: October 25, 2026\\
+  \else Status: Final\\
+  \fi Final due: November 30, 2026\par\vspace{1.4ex}
+  \infohead{Keywords}
+  Groundwater\\ Aquifers\\ Acequias\\ Sandoval County\\ Cuba, New Mexico\par\vspace{1.4ex}
+  \infohead{Online}
+  \href{https://eng220aquiferproject.streamlit.app/}{Interactive dashboard}\\
+  \href{https://github.com/pdjordj11/eng_220_aquifer_project}{Code and data (GitHub)}\\
+  \href{https://pdjordj11.github.io/eng_220_aquifer_project/}{Project documentation}
+\end{minipage}%
+\hfill{\color{accentblue}\vrule width 0.4pt}\hfill
+\begin{minipage}[t]{0.70\textwidth}
+  \infohead{Abstract}
+  \small
+  Water scarcity is a persistent challenge across New Mexico. Sandoval County spans several
+  hydrogeologic settings, and its communities depend on a mix of groundwater wells, surface water,
+  and acequia irrigation systems. This project evaluates the condition and long-term viability of
+  those water resources across the county, with Cuba, New Mexico, on the eastern edge of the San
+  Juan Basin, as a focused case study. The project is motivated by concern about declining
+  groundwater near Cuba, but rather than assume how severe that decline is or what is causing it,
+  we test what the available public data actually show.
+  \draftnote{Add the data used, the main findings, and what they mean, in three to four
+  sentences, once the analysis is complete.}
+\end{minipage}
+\par\vspace{1.6ex}
+{\color{accentblue}\rule{\textwidth}{0.4pt}}\par\vspace{2.6ex}
+}]
+\thispagestyle{firstpage}
+
+% =====================================================================
+\section{Introduction}
+% =====================================================================
+\subsection{Background and Motivation}
+\draftnote{Background on water resources in New Mexico and Sandoval County, and the concern about
+declining groundwater near Cuba that motivated the project.}
+
+\subsection{Approach}
+The study works at two levels:
+\begin{itemize}
+  \item \textbf{County-wide screening.} Map and compare aquifers, wells, water levels, water
+        quality, and acequia and surface-water features across Sandoval County. Because the county
+        crosses several geologic regions, comparisons are grouped by region or aquifer system
+        instead of treating the county as one uniform aquifer.
+  \item \textbf{Cuba case study.} A closer look at the Ojo Alamo Sandstone and San Jose Formation
+        near Cuba, using San Juan Basin aquifer datasets alongside nearby well, water-level, and
+        water-quality records.
+\end{itemize}
+
+\subsection{Research Questions}
+\begin{enumerate}[label={\color{titleblue}\bfseries RQ\arabic*.},leftmargin=2.6em,labelsep=0.4em]
+  \item How do groundwater levels vary across Sandoval County, and which areas show sustained
+        decline, stability, or recovery?
+  \item What do well records show about well depth, depth to water, and the aquifer units that
+        communities rely on?
+  \item Do the available data support the concern that Cuba's main groundwater source is
+        approaching severe depletion?
+  \item How do the Ojo Alamo Sandstone and San Jose Formation compare near Cuba in extent,
+        thickness, hydraulic properties, water levels, and water quality?
+  \item How does groundwater quality, including salinity, vary across the county and near Cuba?
+  \item Where are acequias located, what surface water do they depend on, and which communities
+        do they serve?
+  \item Do changes in groundwater levels line up with nearby surface-water or acequia conditions,
+        or are the records too limited to tell?
+  \item Where is monitoring coverage strong, and where are the most important data gaps?
+  \item Which indicators can be combined into a dashboard that shows water-resource stress without
+        overstating how certain the data are?
+\end{enumerate}
+
+% ---------------------------------------------------------------------
+%  Figure 1: county map (LaTeX places it at the top of the next page)
+% ---------------------------------------------------------------------
+\begin{figure*}[t]
+  \centering
+  \figplaceholder[2.2in]{Figure 1 (to be added by the analysis lead): county map showing wells,
+  water-level measurements, major aquifer and geologic regions, and acequias, with Cuba marked.}
+  \caption{\draftnote{Caption to be written.}}
+  \label{fig:map}
+\end{figure*}
+
+% =====================================================================
+\section{Study Area}\label{sec:study}
+% =====================================================================
+\subsection{Sandoval County}
+\draftnote{Describe the county, its hydrogeologic settings, and its main communities and water
+sources (Fig.~\ref{fig:map}).}
+
+\subsection{Cuba Focus Area}
+Cuba lies on the eastern edge of the San Juan Basin. The case study focuses on the Ojo Alamo
+Sandstone and San Jose Formation near Cuba \citep{usgs_rasa_sjb,kernodle1996}.
+\draftnote{Describe Cuba, its water supply, and the aquifers it draws from, and define the
+boundaries of the focus area.}
+
+% =====================================================================
+\section{Data}\label{sec:data}
+% =====================================================================
+Town-specific data for Cuba are limited, so the study relies on broader public datasets that can
+be filtered geographically.
+
+\subsection{Datasets Used}
+\subsubsection{USGS monitoring statistics}
+USGS monthly and yearly statistics for 30 monitoring sites in Sandoval County (17 stream gages,
+9 wells, 2 canals, and 2 reservoirs), with records from 1926 to 2026. The file covers streamflow,
+depth to groundwater, reservoir storage, suspended sediment, water temperature, and water-quality
+measures: specific conductance, dissolved oxygen, pH, and turbidity.
+\draftnote{Source to be added.}
+
+\subsubsection{OSE aquifer tests}
+New Mexico Office of the State Engineer aquifer-test records, 3,455 statewide and 179 in Sandoval
+County, including well depth, screened interval, geologic formation, and hydraulic properties
+such as transmissivity and storativity.
+\draftnote{Source to be added.}
+
+\subsection{Datasets to Be Collected}
+\begin{itemize}
+  \item \textbf{Aquifer geometry near Cuba:} USGS San Juan Basin digital aquifer data for the Ojo
+        Alamo Sandstone and San Jose Formation \citep{usgs_rasa_sjb}.
+  \item \textbf{Water quality and salinity:} the San Juan Basin Brackish Water Assessment
+        \citep{nmbg_bwa} and New Mexico Water Data records \citep{nmwaterdata}.
+  \item \textbf{Acequias:} locations and service areas of acequias and community ditches
+        \citep{isc_acequias}.
+  \item \textbf{More water-level records:} the National Ground-Water Monitoring Network
+        \citep{ngwmn} and the Healy Collaborative Groundwater Monitoring Network \citep{cgmn}.
+  \item \textbf{County boundary:} a Sandoval County boundary layer to organize the maps.
+\end{itemize}
+\draftnote{Data acquisition lead: explain why each dataset was chosen and which research questions
+it answers.}
+
+% =====================================================================
+\section{Methods}\label{sec:methods}
+% =====================================================================
+\subsection{Data Cleaning}
+Raw downloads are kept unedited in the repository. Each cleaned file is made by a script that
+reads the raw file and writes the cleaned one, so anyone can rerun it and get the same result.
+All cleaned files share the same columns for site ID, site name, latitude, longitude, date, and
+source, with one row per measurement and missing values left blank.
+\draftnote{Data cleaning lead: describe each cleaning step, the decisions made, and the final row
+counts.}
+
+\subsection{Analysis}
+The analysis focuses on measurable indicators, such as depth to water, water-level change over
+time, well depth, aquifer unit, and salinity, rather than a full hydrologic model. Where records
+are sparse, the results say so instead of filling the gaps.
+\draftnote{Analysis lead: describe the method used for each research question.}
+
+\subsection{Classifying Findings}
+Each finding is labeled as one of the following:
+\begin{itemize}
+  \item \textbf{Measured:} a trend or pattern the data show directly.
+  \item \textbf{Hypothesis:} a possible explanation the data are consistent with but don't prove.
+  \item \textbf{Insufficient data:} a question the available records can't answer yet.
+\end{itemize}
+
+\subsection{Interactive Dashboard}
+Results are presented in an interactive Streamlit dashboard built with pandas and Plotly. Code
+and documentation are maintained on GitHub \citep{team23_repo}.
+\draftnote{Dashboard lead: describe each page of the app and what a visitor can do there.}
+
+% =====================================================================
+\section{Results}\label{sec:results}
+% =====================================================================
+\subsection{Groundwater Levels}
+\begin{figure}[t]
+  \centering
+  \figplaceholder[1.25in]{Figure 2 (to be added): time series of groundwater levels for wells with
+  repeated measurements.}
+  \caption{\draftnote{Caption to be written.}}
+  \label{fig:levels}
+\end{figure}
+\draftnote{RQ1 (Fig.~\ref{fig:levels}).}
+
+\subsection{Wells and Aquifer Units}
+\draftnote{RQ2.}
+
+\subsection{Cuba Case Study}
+\draftnote{RQ3 and RQ4.}
+
+\subsection{Water Quality}
+\draftnote{RQ5.}
+
+\subsection{Acequias and Surface Water}
+\draftnote{RQ6 and RQ7.}
+
+\subsection{Monitoring Coverage and Data Gaps}
+\draftnote{RQ8.}
+
+% =====================================================================
+\section{Discussion}\label{sec:discussion}
+% =====================================================================
+\draftnote{What the results mean for Sandoval County and Cuba, and which indicators best
+communicate water-resource stress (RQ9).}
+
+% =====================================================================
+\section{Limitations}\label{sec:limits}
+% =====================================================================
+\draftnote{Data gaps and what the data can't support.}
+
+% =====================================================================
+\section{Conclusions}\label{sec:conclusions}
+% =====================================================================
+\draftnote{Summary of findings and recommended next steps.}
+
+% =====================================================================
+%  Back matter
+% =====================================================================
+\Needspace{9\baselineskip}
+\section*{Data and Code Availability}
+\begin{description}[style=nextline,leftmargin=1em,itemsep=1pt,font=\normalfont\bfseries]
+  \item[Code and data] \href{https://github.com/pdjordj11/eng_220_aquifer_project}{\nolinkurl{github.com/pdjordj11/eng_220_aquifer_project}}
+  \item[Interactive dashboard] \href{https://eng220aquiferproject.streamlit.app/}{\nolinkurl{eng220aquiferproject.streamlit.app}}
+  \item[Documentation] \href{https://pdjordj11.github.io/eng_220_aquifer_project/}{\nolinkurl{pdjordj11.github.io/eng_220_aquifer_project}}
+\end{description}
+
+\section*{Author Contributions}
+\begin{description}[leftmargin=0pt,labelsep=0.4em,itemsep=0pt,font=\normalfont\bfseries]
+  \item[P.~Djordjevic:] documentation, final report, presentation, and video.
+  \item[D.~Gonzales:] data acquisition and dataset justification.
+  \item[J.~Wanueka:] data cleaning and preprocessing.
+  \item[M.~Watkins:] analysis code and visualizations.
+  \item[M.~Yousef:] GitHub workflow and the Streamlit app.
+\end{description}
+
+\section*{Acknowledgments}
+\draftnote{To be written.}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

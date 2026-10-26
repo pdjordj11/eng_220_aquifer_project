@@ -2,16 +2,20 @@
 
 **Lead:** Petar Djordjevic
 
-The final written report will be posted here when it's complete.
+The report is written in LaTeX in a two-column format that matches the project proposal. The current version is a **rough-draft template**: the sections are laid out, and each one will be filled in as the project progresses.
 
+- [Report, rough draft (PDF)](files/project_report_draft.pdf)
+- [Report source (LaTeX)](https://github.com/pdjordj11/eng_220_aquifer_project/tree/main/report)
 - [Project proposal (PDF)](https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/project_notes/project_proposal.pdf)
 
-## Planned outline
+## Outline
 
 1. Introduction: background, motivation, and research questions
-2. Data and methods: datasets, cleaning, and analysis methods
-3. Results: key charts and what they show
-4. Discussion: what the results mean for Sandoval County and Cuba
-5. Limitations: data gaps and what the data can't support
-6. Conclusion
-7. References
+2. Study area: Sandoval County and the Cuba focus area
+3. Data: datasets acquired and still to collect
+4. Methods: data cleaning, analysis, how findings are labeled, and the dashboard
+5. Results: groundwater levels, wells and aquifer units, the Cuba case study, water quality, acequias, and data gaps
+6. Discussion
+7. Limitations
+8. Conclusions
+9. Data and code availability, author contributions, and references

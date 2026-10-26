@@ -82,7 +82,8 @@ data/                Raw datasets as downloaded (never edited)
 data/clean/          Cleaned datasets, made by the scripts in cleaning/
 cleaning/            Data cleaning scripts
 docs/                Documentation site pages (MkDocs)
-docs/files/          Presentation slides and other downloads
+docs/files/          Presentation slides, report PDF, and other downloads
+report/              Final report LaTeX source (see report/README.md)
 project_notes/       Proposal, deadlines, and notes
 .devcontainer/       Codespaces setup
 ```
