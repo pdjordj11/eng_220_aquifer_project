@@ -3,7 +3,7 @@
 
 **ENG 220 – Team 23**
 
-**[Live app](https://eng220aquiferproject.streamlit.app/)** | **[Documentation site](https://pdjordj11.github.io/eng_220_aquifer_project/)** | **[Slides and video](https://pdjordj11.github.io/eng_220_aquifer_project/presentation/)**
+**[Live app](https://eng220aquiferproject.streamlit.app/)** | **[Documentation site](https://pdjordj11.github.io/eng_220_aquifer_project/)** | **[Slides and video](https://pdjordj11.github.io/eng_220_aquifer_project/presentation/)** | **[Report](https://pdjordj11.github.io/eng_220_aquifer_project/report/)**
 
 ## Team Roles
 
