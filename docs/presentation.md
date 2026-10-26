@@ -6,7 +6,10 @@ The team presents the project with a slide deck and a seven-minute video. The sl
 
 ## Slides
 
-The slides will be posted here when they're complete, as a PDF to view and a PowerPoint file to download.
+The slides are a working draft and will be updated as the team fills them in.
+
+- [View the slides (PDF)](files/beneath_the_mesa_slides.pdf)
+- [Download the slides (PowerPoint)](files/beneath_the_mesa_slides.pptx)
 
 ## Outline
 
