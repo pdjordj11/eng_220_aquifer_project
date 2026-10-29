@@ -22,10 +22,11 @@ Every team member must submit their own copy of the .pptx on Canvas; group submi
 3. **Research questions:** what the project set out to answer
 4. **Data:** the datasets used and where they come from
 5. **Methods:** how the data were cleaned and analyzed
-6. **Results:** charts, maps, and screenshots from the Streamlit app
-7. **Findings:** what the data show, what they suggest, and where they are too limited to tell
-8. **Limitations:** data gaps and what the results can't support
-9. **Links:** the datasets, GitHub repository, and Streamlit app
+6. **Team contributions:** one slide per member, recorded by that member, on how they did their part
+7. **Results:** charts, maps, and screenshots from the Streamlit app
+8. **Findings:** what the data show, what they suggest, and where they are too limited to tell
+9. **Limitations:** data gaps and what the results can't support
+10. **Links:** the datasets, GitHub repository, and Streamlit app
 
 ## Video
 
