@@ -1,0 +1,8 @@
+"POD Number",Code,"Sub basin",County,Source,Q64,Q16,Q4,Sec,Tws,Range,X,Y,,"Start Date","Finish Date","Log File Date","Borehole Depth","Depth Water First Encountered",Driller,"License Number"
+"SJ  00809           ",,"SJ        ",SA,Shallow,,NE,SW,09,22N,04W,296267.0,4002910.0,*,1978-11-28,1979-04-19,1979-05-15,322,145,,319
+"SJ  01824           ",,"SJ        ",SA," ",SW,SW,NW,07,21N,07W,263575.0,3994603.0,*,1984-06-17,1984-06-20,1984-04-06,100,,,917
+"SJ  03562           ",,"SJ        ",SA,Shallow,SW,SW,NW,07,21N,07W,263575.0,3994603.0,*,2005-03-24,2005-03-26,2005-07-18,680,240,"LOPEZ, CLIFFORD",1451
+"SJ  04288 POD1      ",,"SJ        ",SA,Shallow,NE,NE,SW,20,23N,01W,323233.4,4008916.1,,2018-07-17,2018-07-18,2018-07-27,407,114,"STEVENSON, STEVE L.",1111
+"SJ  04455 POD1      ",,"SJ        ",SA,Shallow,NE,SE,NW,01,21N,04W,302800.9,4077234.9,,2021-05-04,2021-05-20,2021-05-24,630,480,"BAILEY, MARK",1357
+"SJ  04531 POD1      ",,"SJ        ",SA,Shallow,,NW,NE,08,21N,04W,294764.2,3993890.0,,2022-06-04,2022-06-30,2022-07-11,600,340,"BAILEY, MARKMANLENENER",1357
+"* UTM location was derived from PLSS - see Help"
