@@ -169,27 +169,147 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="first-level active"><a href="#2-data-cleaning">2. Data cleaning</a></li>
+            <li class="second-level"><a href="#cleaned-files">Cleaned files</a></li>
+                
+                <li class="third-level"><a href="#columns">Columns</a></li>
+                <li class="third-level"><a href="#wells-in-the-groundwater-file">Wells in the groundwater file</a></li>
+            <li class="second-level"><a href="#running-the-script">Running the script</a></li>
+                
             <li class="second-level"><a href="#where-files-go">Where files go</a></li>
                 
+            <li class="second-level"><a href="#how-each-file-was-cleaned">How each file was cleaned</a></li>
+                
+                <li class="third-level"><a href="#groundwater-levels">Groundwater levels</a></li>
+                <li class="third-level"><a href="#aquifer-tests">Aquifer tests</a></li>
             <li class="second-level"><a href="#conventions-for-cleaned-files">Conventions for cleaned files</a></li>
                 
-            <li class="second-level"><a href="#what-each-raw-file-needs">What each raw file needs</a></li>
-                
-                <li class="third-level"><a href="#groundwater-levels-datacleangroundwater_levels_monthlycsv">Groundwater levels → data/clean/groundwater_levels_monthly.csv</a></li>
-                <li class="third-level"><a href="#aquifer-tests-datacleanaquifer_testscsv">Aquifer tests → data/clean/aquifer_tests.csv</a></li>
-            <li class="second-level"><a href="#cleaning-steps">Cleaning steps</a></li>
-                
-            <li class="second-level"><a href="#cleaned-outputs">Cleaned outputs</a></li>
-                
             <li class="second-level"><a href="#problems-and-decisions">Problems and decisions</a></li>
+                
+                <li class="third-level"><a href="#still-open">Still open</a></li>
+            <li class="second-level"><a href="#still-to-clean">Still to clean</a></li>
                 
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
 <h1 id="2-data-cleaning">2. Data cleaning</h1>
-<p><strong>Lead:</strong> James Wanueka</p>
+<p><strong>Lead:</strong> James Wauneka</p>
 <p>This stage turns the raw downloads into tables the analysis code can use directly. Cleaning makes the data correct and consistent; it doesn't draw conclusions. Averaging, trends, and narrowing to the Cuba area happen in the analysis stage.</p>
+<h2 id="cleaned-files">Cleaned files</h2>
+<table>
+<thead>
+<tr>
+<th>Cleaned file</th>
+<th>Rows</th>
+<th>Made from</th>
+<th>What it holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/data/clean/groundwater_levels_monthly.csv"><code>groundwater_levels_monthly.csv</code></a></td>
+<td>2,673</td>
+<td>USGS statistics (<a href="../data-collection/#1-usgs-groundwater-level-statistics">dataset 1</a>)</td>
+<td>Monthly mean depth to water for 9 wells, June 1998 to September 2026</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/data/clean/aquifer_tests.csv"><code>aquifer_tests.csv</code></a></td>
+<td>179</td>
+<td>NM Office of the State Engineer aquifer tests</td>
+<td>One row per aquifer test in Sandoval County, 1930 to 2008, with formation, well construction, and hydraulic properties</td>
+</tr>
+</tbody>
+</table>
+<p>James's MATLAB script, <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs.m"><code>cleaning/clean_csvs.m</code></a>, makes both files. Both follow the <a href="#conventions-for-cleaned-files">conventions</a> below. The groundwater file was checked against the raw data: it has the same rows, dates, and values, with no duplicates.</p>
+<h3 id="columns">Columns</h3>
+<p><strong><code>groundwater_levels_monthly.csv</code>:</strong> <code>site_id</code>, <code>site_name</code>, <code>latitude</code>, <code>longitude</code>, <code>date</code>, <code>source</code>, <code>depth_to_water_ft</code></p>
+<p><strong><code>aquifer_tests.csv</code>:</strong> <code>site_id</code>, <code>site_name</code>, <code>latitude</code>, <code>longitude</code>, <code>date</code>, <code>source</code>, <code>formation</code>, <code>well_depth_ft</code>, <code>screen_top_ft</code>, <code>screen_bottom_ft</code>, <code>depth_to_water_ft</code>, <code>pumping_rate_gpm</code>, <code>transmissivity_drawdown_ft2_per_day</code>, <code>transmissivity_recovery_ft2_per_day</code>, <code>storativity</code>, <code>specific_capacity_gpm_per_ft</code>, <code>hydraulic_conductivity_ft_per_day</code></p>
+<p>In both files, <code>depth_to_water_ft</code> is depth below land surface, so a larger number means a lower water table.</p>
+<h3 id="wells-in-the-groundwater-file">Wells in the groundwater file</h3>
+<table>
+<thead>
+<tr>
+<th><code>site_id</code></th>
+<th>Site name</th>
+<th>Months</th>
+<th>First</th>
+<th>Last</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USGS-351357106323001</td>
+<td>12N.04E.29.433 SANDIA SITE</td>
+<td>323</td>
+<td>1999-02</td>
+<td>2026-04</td>
+</tr>
+<tr>
+<td>USGS-351357106323002</td>
+<td>12N.04E.29.433A SANDIA SITE</td>
+<td>328</td>
+<td>1999-01</td>
+<td>2026-04</td>
+</tr>
+<tr>
+<td>USGS-351357106323003</td>
+<td>12N.04E.29.433B SANDIA SITE</td>
+<td>198</td>
+<td>1999-01</td>
+<td>2015-09</td>
+</tr>
+<tr>
+<td>USGS-351515106410401</td>
+<td>12N.02E.24.144 LINCOLN MIDDLE SCHOOL</td>
+<td>325</td>
+<td>1998-06</td>
+<td>2026-09</td>
+</tr>
+<tr>
+<td>USGS-351515106410402</td>
+<td>12N.02E.24.144A LINCOLN MIDDLE SCHOOL</td>
+<td>310</td>
+<td>1998-06</td>
+<td>2026-09</td>
+</tr>
+<tr>
+<td>USGS-351515106410403</td>
+<td>12N.02E.24.144B LINCOLN MIDDLE SCHOOL</td>
+<td>317</td>
+<td>1998-06</td>
+<td>2026-09</td>
+</tr>
+<tr>
+<td>USGS-351821106333901</td>
+<td>13N.04E.31.343 BERNALILLO SITE</td>
+<td>306</td>
+<td>1999-09</td>
+<td>2026-08</td>
+</tr>
+<tr>
+<td>USGS-351821106333902</td>
+<td>13N.04E.31.343A BERNALILLO SITE PIEZ 2</td>
+<td>238</td>
+<td>1999-09</td>
+<td>2021-02</td>
+</tr>
+<tr>
+<td>USGS-354056106215801</td>
+<td>17N.05E.24.344 DOME ROAD WELL</td>
+<td>328</td>
+<td>1999-02</td>
+<td>2026-06</td>
+</tr>
+</tbody>
+</table>
+<p>Wells with an A or B suffix are at the same location as the well without one but are measured at different depths, so they stay separate.</p>
+<h2 id="running-the-script">Running the script</h2>
+<p>In MATLAB, set the current folder to the repository's root folder (the one that contains <code>data/</code>), then run one of these:</p>
+<pre><code>clean_csvs                  % make both cleaned files
+clean_csvs('groundwater')   % groundwater levels only
+clean_csvs('aquifer')       % aquifer tests only
+</code></pre>
+<p>The script reads <code>data/water_flow_data_sandoval_county_sources.csv</code> (an identical copy of dataset 1) and <code>data/ose_aquifer_test_wells.csv</code>, and writes to <code>data/clean/</code>. As it runs, it prints checks such as row counts, duplicate rows, and the list of formation names, so problems are easy to spot.</p>
 <h2 id="where-files-go">Where files go</h2>
 <table>
 <thead>
@@ -208,7 +328,7 @@
 <tr>
 <td>Cleaning scripts</td>
 <td><code>cleaning/</code></td>
-<td><code>cleaning/clean_aquifer_tests.py</code></td>
+<td><code>cleaning/clean_csvs.m</code></td>
 </tr>
 <tr>
 <td>Cleaned files</td>
@@ -217,7 +337,28 @@
 </tr>
 </tbody>
 </table>
-<p>Each cleaned file has a script with a matching name that reads the raw file and writes the cleaned one, so anyone can rerun it and get the same result. Python or MATLAB both work. If a step is done by hand in Excel, write it down under <a href="#cleaning-steps">Cleaning steps</a>.</p>
+<p>Every cleaned file is made by a script in <code>cleaning/</code> that reads the raw file and writes the cleaned one, so anyone can rerun it and get the same result. Python or MATLAB both work. If a step is done by hand in Excel, write it down under <a href="#how-each-file-was-cleaned">How each file was cleaned</a>.</p>
+<h2 id="how-each-file-was-cleaned">How each file was cleaned</h2>
+<h3 id="groundwater-levels">Groundwater levels</h3>
+<ol>
+<li>Reads every column as text and standardizes the column names.</li>
+<li>Keeps groundwater-level rows (<code>parameter_code</code> 72019) that are monthly means (<code>interval_type</code> is <code>month</code> and <code>parent_statistic_name</code> is <code>Mean</code>). That leaves 2,673 rows.</li>
+<li>Renames columns to the shared names: <code>monitoring_location_id</code> → <code>site_id</code>, <code>monitoring_location_name</code> → <code>site_name</code>, <code>y</code> → <code>latitude</code>, <code>x</code> → <code>longitude</code>, <code>start_date</code> → <code>date</code>, and <code>arithmetic_mean</code> → <code>depth_to_water_ft</code>. Sets <code>source</code> to <code>USGS</code>.</li>
+<li>Keeps wells with an A or B suffix as separate sites.</li>
+<li>Checks for duplicate site-and-date rows (there are none) and counts the wells (9).</li>
+<li>Sorts by site and date, and writes the file with blank cells for missing values.</li>
+</ol>
+<h3 id="aquifer-tests">Aquifer tests</h3>
+<ol>
+<li>Reads every column as text and standardizes the column names. This also removes the hidden byte-order mark from the first column name.</li>
+<li>Keeps Sandoval County rows (<code>COUNTY NAME</code> is <code>SANDOVAL</code>): 179 tests. Every test is kept, even when a well has more than one.</li>
+<li>Keeps the 16 columns the analysis needs, renamed as listed under <a href="#columns">Columns</a>. Empty and administrative columns are left out, such as ground surface elevation (blank for every Sandoval row), <code>GlobalID</code>, and <code>Entered By</code>.</li>
+<li>Converts numbers stored as text, removes commas, and leaves placeholders such as <code>NA</code> and <code>-9999</code> blank.</li>
+<li>Converts dates such as <code>11/12/2002 12:00:00 AM</code> to <code>2002-11-12</code>.</li>
+<li>Cleans formation names: trims extra spaces, converts them to uppercase, and fixes the misspelling <code>SAANDSTONE</code>.</li>
+<li>Sets <code>source</code> to <code>NM OSE</code> and puts the shared columns first.</li>
+<li>Checks for columns that are empty or identical in every row (none were), then sorts by site and date and writes the file.</li>
+</ol>
 <h2 id="conventions-for-cleaned-files">Conventions for cleaned files</h2>
 <p>Every cleaned file follows the same rules, so the files can be combined and charted the same way.</p>
 <p><strong>File names:</strong> lowercase with underscores, describing what's inside, such as <code>groundwater_levels_monthly.csv</code>. No dates, versions, or "final" in names; GitHub keeps the history.</p>
@@ -263,37 +404,51 @@
 </ul>
 <p><strong>File format:</strong> comma-separated, UTF-8, one header row, and no index column. In pandas, use <code>df.to_csv(path, index=False)</code>. From Excel, save as "CSV UTF-8".</p>
 <p><strong>What to keep:</strong> IDs, location, date, and every measurement the analysis might use. Drop columns that are empty or identical in every row.</p>
-<h2 id="what-each-raw-file-needs">What each raw file needs</h2>
-<h3 id="groundwater-levels-datacleangroundwater_levels_monthlycsv">Groundwater levels → <code>data/clean/groundwater_levels_monthly.csv</code></h3>
-<p>From <code>data/water_flow_data_sandoval_county_sources.csv</code>:</p>
-<ul>
-<li>Keep groundwater-level rows only: <code>parameter_code</code> 72019.</li>
-<li>Keep one period and statistic: <code>interval_type</code> is <code>month</code> and <code>parent_statistic_name</code> is <code>Mean</code>. That leaves 2,673 rows for 9 wells, with no duplicates.</li>
-<li>Rename to the shared columns: <code>monitoring_location_id</code> → <code>site_id</code>, <code>monitoring_location_name</code> → <code>site_name</code>, <code>y</code> → <code>latitude</code>, <code>x</code> → <code>longitude</code>, <code>start_date</code> → <code>date</code>, and <code>arithmetic_mean</code> → <code>depth_to_water_ft</code>. Set <code>source</code> to <code>USGS</code>.</li>
-<li>Keep wells with an A or B suffix as separate sites. They're measured at different depths at the same location, so don't average them together.</li>
-<li>Values are depth below land surface, so a larger number means a lower water table.</li>
-</ul>
-<p>The other measurements in this file (streamflow, reservoir storage, water quality) can follow the same pattern later, one file per measurement.</p>
-<h3 id="aquifer-tests-datacleanaquifer_testscsv">Aquifer tests → <code>data/clean/aquifer_tests.csv</code></h3>
-<p>From <code>data/ose_aquifer_test_wells.csv</code>:</p>
-<ul>
-<li>Keep Sandoval County only: <code>COUNTY NAME</code> is <code>SANDOVAL</code>, which leaves 179 rows.</li>
-<li>The file starts with a hidden byte-order mark, so the first column name can appear as <code>ï»¿ObjectID</code>. In pandas, read the file with <code>encoding="utf-8-sig"</code>.</li>
-<li>Keep one row per test. The same well (<code>OSE POD ID</code>) can appear more than once, so don't remove rows just because a well ID repeats.</li>
-<li>Convert dates such as <code>11/12/2002 12:00:00 AM</code> to <code>2002-11-12</code>.</li>
-<li><code>START WATER LEVEL DATE</code> uses <code>1/1/1900</code> when the date is unknown. Leave those blank.</li>
-<li>Some numbers are stored as text, and one hydraulic conductivity value is a range (<code>11 to 21</code>). Convert everything to numbers, decide how to handle ranges, and record the decision under <a href="#problems-and-decisions">Problems and decisions</a>.</li>
-<li>Fix misspelled formation names and extra spaces, such as <code>POINT LOOKOUT SAANDSTONE</code> and <code>MENEFEE FORMATION</code>.</li>
-<li>Drop empty and administrative columns. <code>GROUND SURFACE ELEVATION - FT AMSL</code> is blank for every Sandoval row, and columns such as <code>GlobalID</code>, <code>Entered By</code>, <code>Creator</code>, and <code>Editor</code> aren't needed.</li>
-<li>Some test dates are January 1, which may mean only the year is known. Keep them, but note it.</li>
-</ul>
-<p>Suggested columns, in order: <code>site_id</code> (from <code>OSE POD ID</code>), <code>site_name</code> (<code>ALT WELL NAME</code>), <code>latitude</code>, <code>longitude</code>, <code>date</code> (test start), <code>source</code> (<code>NM OSE</code>), <code>formation</code>, <code>well_depth_ft</code>, <code>screen_top_ft</code>, <code>screen_bottom_ft</code>, <code>depth_to_water_ft</code> (start water level), <code>pumping_rate_gpm</code>, <code>transmissivity_drawdown_ft2_per_day</code>, <code>transmissivity_recovery_ft2_per_day</code>, <code>storativity</code>, <code>specific_capacity_gpm_per_ft</code>, and <code>hydraulic_conductivity_ft_per_day</code>.</p>
-<h2 id="cleaning-steps">Cleaning steps</h2>
-<p><em>To be written: each step, in order, and the script that does it.</em></p>
-<h2 id="cleaned-outputs">Cleaned outputs</h2>
-<p><em>To be written: each cleaned file, its row count, and the script that makes it.</em></p>
 <h2 id="problems-and-decisions">Problems and decisions</h2>
-<p><em>To be written: missing values, odd records, and how they were handled.</em></p></div>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One hydraulic conductivity value is a range, <code>11 to 21</code> (Centex American Gypsum Company well)</td>
+<td>Uses the midpoint, 16 ft/day</td>
+</tr>
+<tr>
+<td>104 tests have <code>1/1/1900</code> as the start water-level date, meaning the date is unknown</td>
+<td>Treated as unknown. The date column isn't in the cleaned file.</td>
+</tr>
+<tr>
+<td>30 tests are dated January 1, which may mean only the year is known</td>
+<td>Kept as is</td>
+</tr>
+<tr>
+<td>Formation misspelled as <code>POINT LOOKOUT SAANDSTONE</code></td>
+<td>Fixed to <code>POINT LOOKOUT SANDSTONE</code></td>
+</tr>
+<tr>
+<td>Many tests are missing measurements, such as formation (blank for 54 of 179 tests) and storativity (blank for 165)</td>
+<td>Left blank, as the conventions require</td>
+</tr>
+</tbody>
+</table>
+<h3 id="still-open">Still open</h3>
+<ul>
+<li><strong>Incomplete well IDs in the aquifer-test file.</strong> In the raw file, 157 of the 179 <code>OSE POD ID</code> values are incomplete, and 85 are just <code>RG--</code>. As a result, <code>site_id</code> groups unrelated wells together: the cleaned file has 73 site IDs but about 149 distinct wells by name and location. Until this is fixed, the analysis should tell wells apart by <code>site_name</code>, <code>latitude</code>, and <code>longitude</code>, not by <code>site_id</code>.</li>
+<li><strong>One formation name is still misspelled.</strong> <code>AGUA ZARCA SANDSTONE MEMBER OF SIERRA NACIEMIENTO</code> should be <code>NACIMIENTO</code>. It can be added to the list of fixes in the script's <code>clean_formation</code> function.</li>
+</ul>
+<h2 id="still-to-clean">Still to clean</h2>
+<p>These raw files aren't cleaned yet. See <a href="../data-collection/">Data collection</a> for what each one contains.</p>
+<ul>
+<li><strong>NM Bureau of Geology groundwater levels</strong> (dataset 2): convert UTM easting and northing to latitude and longitude, after checking the zone and datum.</li>
+<li><strong>Rio Puerco at Cuba</strong> (dataset 4): the streamflow and gage-height measurements.</li>
+<li><strong>Wells with well logs</strong> (dataset 7): convert UTM coordinates to latitude and longitude, and trim the extra spaces in well IDs.</li>
+<li><strong>Other USGS measurements in dataset 1:</strong> streamflow, reservoir storage, and water quality, one cleaned file per measurement, following the groundwater-levels pattern.</li>
+</ul>
+<p>Datasets 3, 5, and 6 don't need cleaning: dataset 3 has no locations until its map layer is downloaded, and datasets 5 and 6 are publications rather than data tables.</p></div>
         
         
     </div>
