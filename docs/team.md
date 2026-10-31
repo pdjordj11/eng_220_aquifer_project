@@ -6,7 +6,7 @@ ENG 220 · Team 23 · Instructor: Ramiro Jordan
 |---|---|
 | Petar Djordjevic (Prime Minister) | Documentation, final report, presentation, and video |
 | Dylan Gonzales | Data acquisition and dataset justification |
-| James Wanueka | Data cleaning and preprocessing |
+| James Wauneka | Data cleaning and preprocessing |
 | Micah Watkins | Analysis code and visualizations |
 | Meckrem Yousef | GitHub workflow and the Streamlit app |
 
@@ -19,7 +19,7 @@ Each member describes their own contributions here.
 
 *To be written.*
 
-### James Wanueka
+### James Wauneka
 
 *To be written.*
 
