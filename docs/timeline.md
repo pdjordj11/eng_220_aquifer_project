@@ -17,7 +17,8 @@ What the team completed at each course checkpoint.
 
 ## Three-quarter · Tue, Nov 3
 
-*Upcoming.*
+- Seven datasets gathered, each with a one-page brief from Dylan explaining what it contains, why it was picked, and how to plot it (see [Data collection](data-collection.md))
+- First two datasets cleaned by James, groundwater levels and aquifer tests, with a MATLAB script that anyone can rerun (see [Data cleaning](data-cleaning.md))
 
 ## Final · Mon, Nov 30
 
