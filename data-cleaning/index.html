@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Assessing aquifer, well, and acequia water resources across Sandoval County, New Mexico">
+    <meta name="description" content="Assessing aquifer and well water resources across Sandoval County, New Mexico">
     
     <link rel="canonical" href="https://pdjordj11.github.io/eng_220_aquifer_project/data-cleaning/">
     <link rel="shortcut icon" href="../img/favicon.ico">
@@ -446,7 +446,7 @@ clean_csvs('aquifer')       % aquifer tests only
 <li><strong>NM Bureau of Geology groundwater levels</strong> (dataset 2): convert UTM easting and northing to latitude and longitude, after checking the zone and datum.</li>
 <li><strong>Rio Puerco at Cuba</strong> (dataset 4): the streamflow and gage-height measurements.</li>
 <li><strong>Wells with well logs</strong> (dataset 7): convert UTM coordinates to latitude and longitude, and trim the extra spaces in well IDs.</li>
-<li><strong>Other USGS measurements in dataset 1:</strong> streamflow, reservoir storage, and water quality, one cleaned file per measurement, following the groundwater-levels pattern.</li>
+<li><strong>Other USGS measurements in dataset 1:</strong> streamflow and reservoir storage, if the analysis uses them, one cleaned file per measurement, following the groundwater-levels pattern. The stream water-quality measurements don't need cleaning, since the project no longer covers water quality.</li>
 </ul>
 <p>Datasets 3, 5, and 6 don't need cleaning: dataset 3 has no locations until its map layer is downloaded, and datasets 5 and 6 are publications rather than data tables.</p></div>
         

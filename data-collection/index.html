@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Assessing aquifer, well, and acequia water resources across Sandoval County, New Mexico">
+    <meta name="description" content="Assessing aquifer and well water resources across Sandoval County, New Mexico">
     
     <link rel="canonical" href="https://pdjordj11.github.io/eng_220_aquifer_project/data-collection/">
     <link rel="shortcut icon" href="../img/favicon.ico">
@@ -181,7 +181,7 @@
                 <li class="third-level"><a href="#6-san-jose-formation-near-lindrith">6. San Jose Formation near Lindrith</a></li>
                 <li class="third-level"><a href="#7-wells-with-well-logs">7. Wells with well logs</a></li>
                 <li class="third-level"><a href="#other-raw-data-in-the-repository">Other raw data in the repository</a></li>
-            <li class="second-level"><a href="#still-to-collect">Still to collect</a></li>
+            <li class="second-level"><a href="#not-collected">Not collected</a></li>
                 
             <li class="second-level"><a href="#sources">Sources</a></li>
                 
@@ -196,8 +196,9 @@
 <ul>
 <li><a href="../files/Overview_doc1thru7_Cuba_Water_Project_Data_Plotting_Guide.pdf">Data plotting guide for datasets 1–7 (PDF)</a></li>
 </ul>
+<p>The briefs and the guide use the proposal's original nine research questions. Three of those were later dropped (see <a href="#not-collected">Not collected</a>) and the rest were renumbered: Q1 to Q4 are unchanged, the proposal's Q8 is now Q5, and its Q9 is now Q6. This page uses the new numbers.</p>
 <h2 id="what-the-data-can-and-cant-show">What the data can and can't show</h2>
-<p>Together, the datasets are strongest for groundwater trends at monitored wells (Q1), well characteristics (Q2), comparing the Ojo Alamo Sandstone and San Jose Formation (Q4), stream observations at Cuba (Q7), monitoring coverage and gaps (Q8), and dashboard indicators (Q9).</p>
+<p>Together, the datasets are strongest for groundwater trends at monitored wells (Q1), well characteristics (Q2), comparing the Ojo Alamo Sandstone and San Jose Formation (Q4), monitoring coverage and gaps (Q5), and dashboard indicators (Q6). The Rio Puerco measurements are the only data from Cuba itself, and they describe the river, not groundwater.</p>
 <p>None of them shows on its own whether Cuba's municipal aquifer is being depleted, or which formation Cuba's wells draw from. Every chart and caption should say whether it describes Cuba itself, Sandoval County, or the wider San Juan Basin.</p>
 <h2 id="datasets">Datasets</h2>
 <table>
@@ -217,7 +218,7 @@
 <td>Groundwater-level statistics</td>
 <td>USGS</td>
 <td>Countywide; no Cuba wells</td>
-<td>Q1, Q8, Q9</td>
+<td>Q1, Q5, Q6</td>
 <td><a href="../files/support_doc1_Sandoval_Groundwater_Data_Research_Brief.pdf">PDF</a></td>
 </tr>
 <tr>
@@ -225,7 +226,7 @@
 <td>Groundwater levels</td>
 <td>NM Bureau of Geology</td>
 <td>Countywide; nearest well about 24 miles from Cuba</td>
-<td>Q2, Q8, Q1</td>
+<td>Q2, Q5, Q1</td>
 <td><a href="../files/support_doc2_NMBGMR_Sandoval_Groundwater_Research_Brief_RECREATED.pdf">PDF</a></td>
 </tr>
 <tr>
@@ -233,7 +234,7 @@
 <td>Aquifer sensitivity</td>
 <td>NM Water Data</td>
 <td>Not established; the file has no locations</td>
-<td>Q9, once checked</td>
+<td>Q6, once checked</td>
 <td><a href="../files/support_doc3_Aquifer_Sensitivity_Research_Brief.pdf">PDF</a></td>
 </tr>
 <tr>
@@ -241,7 +242,7 @@
 <td>Rio Puerco at Cuba</td>
 <td>USGS</td>
 <td>At Cuba (river, not groundwater)</td>
-<td>Q7, Q8, Q9</td>
+<td>Q3 (context), Q5, Q6</td>
 <td><a href="../files/support_doc4_Rio_Puerco_Cuba_USGS_Research_Brief.pdf">PDF</a></td>
 </tr>
 <tr>
@@ -265,7 +266,7 @@
 <td>Wells with well logs</td>
 <td>NM Office of the State Engineer</td>
 <td>6 Sandoval well logs; Cuba link not verified</td>
-<td>Q2, Q8</td>
+<td>Q2, Q5</td>
 <td><a href="../files/support_doc7_San_Juan_Wells_With_Well_Log_Research_Brief.pdf">PDF</a></td>
 </tr>
 </tbody>
@@ -292,7 +293,7 @@
 <strong>Source:</strong> <a href="https://catalog.newmexicowaterdata.org/dataset/aquifer-sensitivity">New Mexico Water Data: aquifer sensitivity</a> (<a href="https://catalog.newmexicowaterdata.org/dataset/aquifer-sensitivity/resource/edf278aa-7c5b-4b65-97aa-c6825fa9015c">map layer</a>)</p>
 <p>613 mapped areas, each with a sensitivity class (339 Moderate, 152 High, and 122 Less) and the area's size and perimeter. The CSV has no coordinates or shapes, so it can't be mapped or matched to Cuba on its own.</p>
 <ul>
-<li><strong>Use for:</strong> a sensitivity indicator on the dashboard (Q9), once the map layer is downloaded and it's clear what "sensitivity" measures.</li>
+<li><strong>Use for:</strong> a sensitivity indicator on the dashboard (Q6), once the map layer is downloaded and it's clear what "sensitivity" measures.</li>
 <li><strong>Cautions:</strong> the class counts are numbers of mapped areas, not shares of land. The file doesn't state the units for area and perimeter.</li>
 </ul>
 <h3 id="4-rio-puerco-at-cuba">4. Rio Puerco at Cuba</h3>
@@ -300,7 +301,7 @@
 <strong>Source:</strong> <a href="https://www.waterqualitydata.us/provider/NWIS/USGS-NM/USGS-08332525/">USGS station 08332525 on the Water Quality Portal</a></p>
 <p>The only dataset measured at Cuba itself: USGS station 08332525 on the Rio Puerco. The three files hold the station's details and coordinates, 4 gage-height readings (2019 to 2024), and 10 streamflow measurements (2019 to 2026). Six of the streamflow visits found no flow, and the other four measured 6.89 to 20.40 cubic feet per second.</p>
 <ul>
-<li><strong>Use for:</strong> a scatter plot of flow by date, a count of zero-flow and flowing visits, and a map of the station relative to Cuba.</li>
+<li><strong>Use for:</strong> surface-water context in the Cuba case study (Q3): a scatter plot of flow by date, a count of zero-flow and flowing visits, and a map of the station relative to Cuba.</li>
 <li><strong>Cautions:</strong> these are occasional visits, not a continuous record, so zero-flow readings don't mean the river is dry all year. The station measures the river, not Cuba's groundwater or water supply.</li>
 </ul>
 <h3 id="5-ojo-alamo-sandstone">5. Ojo Alamo Sandstone</h3>
@@ -324,20 +325,21 @@
 <strong>Source:</strong> NM Office of the State Engineer, Water Rights Reporting System, "Wells With Well Log Information" report for the San Juan basin</p>
 <p>Drilling records for 6 wells in Sandoval County, drilled between 1978 and 2022, with location, borehole depth, depth where water was first found, and driller. They come from a San Juan basin download of 1,379 well logs across four counties, which Dylan's brief describes.</p>
 <ul>
-<li><strong>Use for:</strong> comparing borehole depth with first-water depth (Q2), and mapping where well logs exist (Q8).</li>
+<li><strong>Use for:</strong> comparing borehole depth with first-water depth (Q2), and mapping where well logs exist (Q5).</li>
 <li><strong>Cautions:</strong> first-water depth was recorded on drilling day, not as a current water level. The file doesn't identify Cuba's municipal wells or the formation each well draws from.</li>
 </ul>
 <h3 id="other-raw-data-in-the-repository">Other raw data in the repository</h3>
 <p><strong><code>ose_aquifer_test_wells.csv</code>:</strong> New Mexico Office of the State Engineer aquifer-test records, 3,455 statewide and 179 in Sandoval County, including well depth, screened interval, geologic formation, and hydraulic properties such as transmissivity and storativity. It's cleaned into <code>data/clean/aquifer_tests.csv</code> (see <a href="../data-cleaning/">Data cleaning</a>).<br>
 <strong>Source:</strong> <em>To be added: link to the page this file was downloaded from.</em></p>
 <p><strong><code>water_flow_data_sandoval_county_sources.csv</code>:</strong> an identical copy of dataset 1. The cleaning script reads this copy.</p>
-<h2 id="still-to-collect">Still to collect</h2>
+<h2 id="not-collected">Not collected</h2>
+<p>These sources were identified in the proposal but weren't collected during the project. The report's Limitations section explains what their absence means for the findings.</p>
 <ul>
 <li><strong>Cuba's municipal well records:</strong> well IDs, the formation each well draws from, pumping volumes, and water-level history, from the Village of Cuba or the NM Office of the State Engineer. Every brief points to these records as the missing piece for answering whether Cuba's aquifer is being depleted (Q3).</li>
 <li><strong>Aquifer sensitivity map layer:</strong> the map layer for dataset 3 and documentation of what its classes mean, to check whether it covers Cuba.</li>
 <li><strong>Digital aquifer data near Cuba:</strong> USGS San Juan Basin digital aquifer data for the Ojo Alamo Sandstone and San Jose Formation, to go beyond the maps in datasets 5 and 6.</li>
-<li><strong>Water quality and salinity:</strong> the NM Bureau of Geology San Juan Basin Brackish Water Assessment and New Mexico Water Data records.</li>
-<li><strong>Acequias:</strong> locations and service areas of acequias and community ditches from the NM Interstate Stream Commission.</li>
+<li><strong>Water quality and salinity:</strong> the NM Bureau of Geology San Juan Basin Brackish Water Assessment and New Mexico Water Data records. Without them, the proposal's question on groundwater quality was dropped.</li>
+<li><strong>Acequias:</strong> locations and service areas of acequias and community ditches from the NM Interstate Stream Commission. Without them, the proposal's questions on acequias and on links between groundwater and surface water were dropped.</li>
 <li><strong>More water-level records:</strong> National Ground-Water Monitoring Network and Healy Collaborative Groundwater Monitoring Network data.</li>
 <li><strong>Shallow groundwater depth:</strong> the <a href="https://catalog.newmexicowaterdata.org/dataset/mean-annual-depth-to-groundwater-for-the-shallow-riparian-aquifer">mean annual depth to groundwater for the shallow riparian aquifer</a> dataset.</li>
 <li><strong>County boundary:</strong> a Sandoval County boundary layer to organize the maps.</li>
