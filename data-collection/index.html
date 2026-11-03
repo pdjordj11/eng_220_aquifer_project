@@ -332,6 +332,8 @@
 <p><strong><code>ose_aquifer_test_wells.csv</code>:</strong> New Mexico Office of the State Engineer aquifer-test records, 3,455 statewide and 179 in Sandoval County, including well depth, screened interval, geologic formation, and hydraulic properties such as transmissivity and storativity. It's cleaned into <code>data/clean/aquifer_tests.csv</code> (see <a href="../data-cleaning/">Data cleaning</a>).<br>
 <strong>Source:</strong> <em>To be added: link to the page this file was downloaded from.</em></p>
 <p><strong><code>water_flow_data_sandoval_county_sources.csv</code>:</strong> an identical copy of dataset 1. The cleaning script reads this copy.</p>
+<p><strong><code>sandoval_county_boundary.geojson</code>:</strong> a simplified Sandoval County outline used as map context in the app and figures.<br>
+<strong>Source:</strong> US Census Bureau 2010 cartographic boundary file, as redistributed in <a href="https://github.com/plotly/datasets/blob/master/geojson-counties-fips.json">plotly/datasets <code>geojson-counties-fips.json</code></a> (FIPS 35043). A more detailed boundary wasn't collected (see below).</p>
 <h2 id="not-collected">Not collected</h2>
 <p>These sources were identified in the proposal but weren't collected during the project. The report's Limitations section explains what their absence means for the findings.</p>
 <ul>
@@ -342,7 +344,7 @@
 <li><strong>Acequias:</strong> locations and service areas of acequias and community ditches from the NM Interstate Stream Commission. Without them, the proposal's questions on acequias and on links between groundwater and surface water were dropped.</li>
 <li><strong>More water-level records:</strong> National Ground-Water Monitoring Network and Healy Collaborative Groundwater Monitoring Network data.</li>
 <li><strong>Shallow groundwater depth:</strong> the <a href="https://catalog.newmexicowaterdata.org/dataset/mean-annual-depth-to-groundwater-for-the-shallow-riparian-aquifer">mean annual depth to groundwater for the shallow riparian aquifer</a> dataset.</li>
-<li><strong>County boundary:</strong> a Sandoval County boundary layer to organize the maps.</li>
+<li><strong>County boundary:</strong> a detailed Sandoval County boundary layer. The maps use the simplified US Census outline above instead.</li>
 </ul>
 <h2 id="sources">Sources</h2>
 <ul>

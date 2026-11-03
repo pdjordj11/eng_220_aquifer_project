@@ -184,7 +184,54 @@
 <p><a href="https://eng220aquiferproject.streamlit.app/">Open the live app</a></p>
 <p>The interactive dashboard presents the project's results. It's built with Streamlit, pandas, and Plotly, and runs from <code>ProjectApp.py</code> in the repository.</p>
 <h2 id="what-the-app-shows">What the app shows</h2>
-<p><em>To be written: each page or section of the app and what a visitor can do there.</em></p>
+<p>Each page shows its charts with a one-line takeaway, what is plotted, the chart's scope (Cuba, the Cuba area, or Sandoval County), a caption, the findings labeled <em>Measured</em>, <em>Hypothesis</em>, or <em>Insufficient data</em>, and a "Data behind this chart" table with a CSV download. Charts are interactive: hover for exact values, drag to zoom, double-click to reset. They follow the app's light or dark theme. Six charts show small pictograms (wells, stream gages, river visits, rating balls); the <strong>Pictograph charts</strong> switch in the sidebar turns them off to show the plain versions used in the report (see <a href="../analysis/#pictograph-versions">Pictograph versions</a>).</p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>What it shows</th>
+<th>Research questions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td>Project summary, links, and the research questions</td>
+<td>All</td>
+</tr>
+<tr>
+<td>County map</td>
+<td>Every site in the project's datasets on a map, colored by what it measures</td>
+<td>1, 5</td>
+</tr>
+<tr>
+<td>Groundwater levels</td>
+<td>Monthly water levels at the 9 USGS monitoring wells, their trends, and Placitas wells re-measured after 20 years</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Wells and aquifers</td>
+<td>Well depth vs depth to water, depth to water by area, and aquifer-test properties by formation (choose the measurement from a menu)</td>
+<td>2, 4</td>
+</tr>
+<tr>
+<td>Cuba case study</td>
+<td>Key numbers, a short answer to research question 3, a map of sites near Cuba, the nearest record in each dataset, the USGS Ojo Alamo depth map around Cuba, Ojo Alamo vs San Jose tests, and Rio Puerco visits</td>
+<td>3, 4</td>
+</tr>
+<tr>
+<td>Data sources</td>
+<td>Dataset list and links, a timeline of monitoring coverage, a dataset-by-question evidence matrix, aquifer-sensitivity classes, and a table of groundwater-stress indicators</td>
+<td>5, 6</td>
+</tr>
+<tr>
+<td>Sandbox</td>
+<td>A test page with random data (not project results)</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>The chart code lives in <code>analysis/</code> (see <a href="../analysis/">Analysis and visualizations</a>); each page file in <code>app_pages/</code> calls <code>show_chart(...)</code> for its charts. The maps use the free CARTO basemap, which needs an internet connection.</p>
 <h2 id="running-it-yourself">Running it yourself</h2>
 <p>In GitHub Codespaces, open a codespace from the repository's <strong>Code</strong> button and the app starts automatically. On your own computer:</p>
 <pre><code>pip install -r requirements.txt

@@ -448,6 +448,7 @@ clean_csvs('aquifer')       % aquifer tests only
 <li><strong>Wells with well logs</strong> (dataset 7): convert UTM coordinates to latitude and longitude, and trim the extra spaces in well IDs.</li>
 <li><strong>Other USGS measurements in dataset 1:</strong> streamflow and reservoir storage, if the analysis uses them, one cleaned file per measurement, following the groundwater-levels pattern. The stream water-quality measurements don't need cleaning, since the project no longer covers water quality.</li>
 </ul>
+<p>Until these are cleaned, the analysis code does the minimum preparation needed to chart them (UTM-to-latitude/longitude conversion, date parsing, and the like) without changing the raw files; the steps are listed on the <a href="../analysis/#data-preparation-inside-the-analysis-code">Analysis</a> page. When a cleaned file is added here, only the matching loader in <code>analysis/data.py</code> needs to change.</p>
 <p>Datasets 3, 5, and 6 don't need cleaning: dataset 3 has no locations until its map layer is downloaded, and datasets 5 and 6 are publications rather than data tables.</p></div>
         
         
