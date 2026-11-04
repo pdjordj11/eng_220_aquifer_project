@@ -232,7 +232,7 @@
 <tr>
 <td>3</td>
 <td>Aquifer sensitivity</td>
-<td>NM Water Data</td>
+<td>NM Environment Department</td>
 <td>Not established; the file has no locations</td>
 <td>Q6, once checked</td>
 <td><a href="../files/support_doc3_Aquifer_Sensitivity_Research_Brief.pdf">PDF</a></td>
@@ -271,9 +271,9 @@
 </tr>
 </tbody>
 </table>
-<p>The raw files are in the repository's <a href="https://github.com/pdjordj11/eng_220_aquifer_project/tree/main/data"><code>data/</code> folder</a>, and Word versions of the briefs are in <code>docs/files/</code>.</p>
+<p>The raw files are in the repository's <a href="https://github.com/pdjordj11/eng_220_aquifer_project/tree/main/data"><code>data/</code> folder</a>, whose README lists each file, and Word versions of the briefs are in <code>docs/files/</code>.</p>
 <h3 id="1-usgs-groundwater-level-statistics">1. USGS groundwater-level statistics</h3>
-<p><strong>File:</strong> <code>data1_water_flow_data_sandoval_county_sources.csv</code><br>
+<p><strong>File:</strong> <code>water_flow_data_sandoval_county_sources.csv</code><br>
 <strong>Source:</strong> <a href="https://api.waterdata.usgs.gov/download/statistics/?statistics=intervals&amp;site_type_code=GW&amp;computation_type=arithmetic_mean&amp;computation_type=maximum&amp;computation_type=median&amp;computation_type=minimum&amp;computation_type=percentile&amp;state_code=US%3A35&amp;county_code=US%3A35%3A043&amp;normal_type=DOY&amp;normal_type=MOY&amp;interval_type=M&amp;interval_type=CY&amp;interval_type=WY">USGS Water Data statistics download</a></p>
 <p>USGS monthly and yearly statistics for 30 monitoring sites in Sandoval County (9 wells, 17 stream gages, 2 canals, and 2 reservoirs), with records from 1926 to 2026. Besides depth to groundwater, it covers streamflow, reservoir storage, suspended sediment, water temperature, and water quality (specific conductance, dissolved oxygen, pH, and turbidity). Dylan's brief covers the groundwater part: 9,462 records from 9 wells at four sites (Sandia, Lincoln Middle School, Bernalillo, and Dome Road), from about 1998 to 2026.</p>
 <ul>
@@ -291,14 +291,14 @@
 <h3 id="3-aquifer-sensitivity">3. Aquifer sensitivity</h3>
 <p><strong>File:</strong> <code>data3_Aquifer_Sensitivity.csv</code><br>
 <strong>Source:</strong> <a href="https://catalog.newmexicowaterdata.org/dataset/aquifer-sensitivity">New Mexico Water Data: aquifer sensitivity</a> (<a href="https://catalog.newmexicowaterdata.org/dataset/aquifer-sensitivity/resource/edf278aa-7c5b-4b65-97aa-c6825fa9015c">map layer</a>)</p>
-<p>613 mapped areas, each with a sensitivity class (339 Moderate, 152 High, and 122 Less) and the area's size and perimeter. The CSV has no coordinates or shapes, so it can't be mapped or matched to Cuba on its own.</p>
+<p>613 mapped areas from the New Mexico Environment Department, each with a sensitivity class (339 Moderate, 152 High, and 122 Less) and the area's size and perimeter. The CSV has no coordinates or shapes, so it can't be mapped or matched to Cuba on its own.</p>
 <ul>
 <li><strong>Use for:</strong> a sensitivity indicator on the dashboard (Q6), once the map layer is downloaded and it's clear what "sensitivity" measures.</li>
 <li><strong>Cautions:</strong> the class counts are numbers of mapped areas, not shares of land. The file doesn't state the units for area and perimeter.</li>
 </ul>
 <h3 id="4-rio-puerco-at-cuba">4. Rio Puerco at Cuba</h3>
 <p><strong>Files:</strong> <code>data4_monitoring-location-metadata.csv</code>, <code>data4_field-measurements.csv</code>, <code>data4_channel-measurements.csv</code><br>
-<strong>Source:</strong> <a href="https://www.waterqualitydata.us/provider/NWIS/USGS-NM/USGS-08332525/">USGS station 08332525 on the Water Quality Portal</a></p>
+<strong>Source:</strong> <a href="https://waterdata.usgs.gov/monitoring-location/USGS-08332525/">USGS Water Data for the Nation: Rio Puerco at Cuba, NM (USGS-08332525)</a> (<a href="https://www.waterqualitydata.us/provider/NWIS/USGS-NM/USGS-08332525/">station map on the Water Quality Portal</a>)</p>
 <p>The only dataset measured at Cuba itself: USGS station 08332525 on the Rio Puerco. The three files hold the station's details and coordinates, 4 gage-height readings (2019 to 2024), and 10 streamflow measurements (2019 to 2026). Six of the streamflow visits found no flow, and the other four measured 6.89 to 20.40 cubic feet per second.</p>
 <ul>
 <li><strong>Use for:</strong> surface-water context in the Cuba case study (Q3): a scatter plot of flow by date, a count of zero-flow and flowing visits, and a map of the station relative to Cuba.</li>
@@ -322,7 +322,7 @@
 </ul>
 <h3 id="7-wells-with-well-logs">7. Wells with well logs</h3>
 <p><strong>File:</strong> <code>data7_Wells With Well Log Information.csv</code><br>
-<strong>Source:</strong> NM Office of the State Engineer, Water Rights Reporting System, "Wells With Well Log Information" report for the San Juan basin</p>
+<strong>Source:</strong> NM Office of the State Engineer, <a href="https://nmwrrs.ose.nm.gov/">New Mexico Water Rights Reporting System</a>, "Wells With Well Log Information" report for the San Juan basin</p>
 <p>Drilling records for 6 wells in Sandoval County, drilled between 1978 and 2022, with location, borehole depth, depth where water was first found, and driller. They come from a San Juan basin download of 1,379 well logs across four counties, which Dylan's brief describes.</p>
 <ul>
 <li><strong>Use for:</strong> comparing borehole depth with first-water depth (Q2), and mapping where well logs exist (Q5).</li>
@@ -331,13 +331,12 @@
 <h3 id="other-raw-data-in-the-repository">Other raw data in the repository</h3>
 <p><strong><code>ose_aquifer_test_wells.csv</code>:</strong> New Mexico Office of the State Engineer aquifer-test records, 3,455 statewide and 179 in Sandoval County, including well depth, screened interval, geologic formation, and hydraulic properties such as transmissivity and storativity. It's cleaned into <code>data/clean/aquifer_tests.csv</code> (see <a href="../data-cleaning/">Data cleaning</a>).<br>
 <strong>Source:</strong> <a href="https://www.ose.nm.gov/Hydrology/aquifer.php">NM Office of the State Engineer, Hydrology Bureau: Aquifer Test Index</a> (CSV export; added by Meckrem)</p>
-<p><strong><code>water_flow_data_sandoval_county_sources.csv</code>:</strong> an identical copy of dataset 1. The cleaning script and the analysis code read this copy.</p>
 <p><strong><code>sandoval_county_boundary.geojson</code>:</strong> a simplified Sandoval County outline used as map context in the app and figures.<br>
 <strong>Source:</strong> US Census Bureau 2010 cartographic boundary file, as redistributed in <a href="https://github.com/plotly/datasets/blob/master/geojson-counties-fips.json">plotly/datasets <code>geojson-counties-fips.json</code></a> (FIPS 35043). A more detailed boundary wasn't collected (see below).</p>
 <h2 id="not-collected">Not collected</h2>
 <p>These sources were identified in the proposal but weren't collected during the project. The report's Limitations section explains what their absence means for the findings.</p>
 <ul>
-<li><strong>Cuba's municipal well records:</strong> well IDs, the formation each well draws from, pumping volumes, and water-level history, from the Village of Cuba or the NM Office of the State Engineer. Every brief points to these records as the missing piece for answering whether Cuba's aquifer is being depleted (Q3).</li>
+<li><strong>Cuba's municipal well records:</strong> well IDs, the formation each well draws from, pumping volumes, and water-level history, from the Village of Cuba or the NM Office of the State Engineer. Six of the seven briefs point to these records as the missing piece for answering whether Cuba's aquifer is being depleted (Q3).</li>
 <li><strong>Aquifer sensitivity map layer:</strong> the map layer for dataset 3 and documentation of what its classes mean, to check whether it covers Cuba.</li>
 <li><strong>Digital aquifer data near Cuba:</strong> USGS San Juan Basin digital aquifer data for the Ojo Alamo Sandstone and San Jose Formation, to go beyond the maps in datasets 5 and 6.</li>
 <li><strong>Water quality and salinity:</strong> the NM Bureau of Geology San Juan Basin Brackish Water Assessment and New Mexico Water Data records. Without them, the proposal's question on groundwater quality was dropped.</li>
@@ -351,14 +350,16 @@
 <li><a href="https://api.waterdata.usgs.gov/download/statistics/?statistics=intervals&amp;site_type_code=GW&amp;computation_type=arithmetic_mean&amp;computation_type=maximum&amp;computation_type=median&amp;computation_type=minimum&amp;computation_type=percentile&amp;state_code=US%3A35&amp;county_code=US%3A35%3A043&amp;normal_type=DOY&amp;normal_type=MOY&amp;interval_type=M&amp;interval_type=CY&amp;interval_type=WY">USGS Water Data statistics download (Sandoval County groundwater)</a></li>
 <li><a href="https://catalog.newmexicowaterdata.org/dataset/groundwater-levels/resource/de88e71a-3f5b-4bc9-8fb0-28b81c198952">New Mexico Water Data: groundwater levels</a></li>
 <li><a href="https://catalog.newmexicowaterdata.org/dataset/aquifer-sensitivity">New Mexico Water Data: aquifer sensitivity</a></li>
-<li><a href="https://www.waterqualitydata.us/provider/NWIS/USGS-NM/USGS-08332525/">USGS station 08332525, Rio Puerco at Cuba (Water Quality Portal)</a></li>
+<li><a href="https://waterdata.usgs.gov/monitoring-location/USGS-08332525/">USGS Water Data for the Nation: Rio Puerco at Cuba, NM (USGS-08332525)</a></li>
 <li><a href="https://www.usgs.gov/publications/hydrogeology-ojo-alamo-sandstone-san-juan-structural-basin-new-mexico-colorado-arizona">USGS: Hydrogeology of the Ojo Alamo Sandstone in the San Juan Structural Basin</a></li>
 <li><a href="https://nmgs.nmt.edu/publications/guidebooks/details.cfml?ID=134492">NM Geological Society: San Jose Formation Hydrostratigraphy near Lindrith</a></li>
 <li><a href="https://www.sciencebase.gov/catalog/item/5d8e350be4b0c4f70d0cc484">USGS San Juan Basin digital aquifer data (ScienceBase)</a></li>
 <li><a href="https://pubs.usgs.gov/publication/wri954187">USGS groundwater-flow model report, WRI 95-4187</a></li>
 <li><a href="https://geoinfo.nmt.edu/resources/water/projects/bwa/sjb/home.html">NM Bureau of Geology: San Juan Basin Brackish Water Assessment</a></li>
 <li><a href="https://www.ose.nm.gov/">New Mexico Office of the State Engineer</a></li>
-<li><a href="https://www.usgs.gov/apps/ngwmn/index.jsp">National Ground-Water Monitoring Network</a></li>
+<li><a href="https://www.ose.nm.gov/Hydrology/aquifer.php">NM Office of the State Engineer: Aquifer Test Index</a></li>
+<li><a href="https://nmwrrs.ose.nm.gov/">New Mexico Water Rights Reporting System</a></li>
+<li><a href="https://www.usgs.gov/tools/national-ground-water-monitoring-network-ngwmn-data-portal">National Ground-Water Monitoring Network (NGWMN) data portal</a></li>
 <li><a href="https://geoinfo.nmt.edu/resources/water/cgmn/home.cfml">Healy Collaborative Groundwater Monitoring Network</a></li>
 <li><a href="https://catalog.newmexicowaterdata.org/">New Mexico Water Data Catalog</a></li>
 <li><a href="https://www.ose.nm.gov/Acequias/isc_acequias.php">NM Interstate Stream Commission: Acequias</a></li>
