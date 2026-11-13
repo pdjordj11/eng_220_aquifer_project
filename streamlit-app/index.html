@@ -171,6 +171,8 @@
         <li class="first-level active"><a href="#4-streamlit-app">4. Streamlit app</a></li>
             <li class="second-level"><a href="#what-the-app-shows">What the app shows</a></li>
                 
+            <li class="second-level"><a href="#look-and-phone-layout">Look and phone layout</a></li>
+                
             <li class="second-level"><a href="#running-it-yourself">Running it yourself</a></li>
                 
             <li class="second-level"><a href="#how-the-live-app-updates">How the live app updates</a></li>
@@ -229,9 +231,17 @@
 <td>A test page with random data (not project results)</td>
 <td>-</td>
 </tr>
+<tr>
+<td>Water Estimator</td>
+<td>Estimates a household's daily and monthly water use from everyday activities (showers, toilet flushes, faucet use, laundry, and dishwasher loads), compares the daily total with a New Mexico residential average of 81 gallons a day, and estimates a monthly water bill. The bill's base fee, included gallons, and rate per 1,000 gallons are starting values to replace with the numbers on a Village of Cuba utility statement.</td>
+<td>-</td>
+</tr>
 </tbody>
 </table>
 <p>The chart code lives in <code>analysis/</code> (see <a href="../analysis/">Analysis and visualizations</a>); each page file in <code>app_pages/</code> calls <code>show_chart(...)</code> for its charts. The maps use the free CARTO basemap, which needs an internet connection.</p>
+<h2 id="look-and-phone-layout">Look and phone layout</h2>
+<p>The app's colors are set in <code>.streamlit/config.toml</code> under <code>[theme]</code>: a blue background, a green accent, and light text. On narrow screens such as phones, a few lines of CSS at the top of <code>ProjectApp.py</code> reduce the side padding and shrink the headings, for every page.</p>
+<p>On Nov 12, the theme file was fixed so Streamlit could read it again. A block of Python had been pasted into it and its <code>[theme]</code> heading removed, so the app had been ignoring the file. The Python, which holds the phone-layout CSS, moved to <code>ProjectApp.py</code>.</p>
 <h2 id="running-it-yourself">Running it yourself</h2>
 <p>In GitHub Codespaces, open a codespace from the repository's <strong>Code</strong> button and the app starts automatically. On your own computer:</p>
 <pre><code>pip install -r requirements.txt

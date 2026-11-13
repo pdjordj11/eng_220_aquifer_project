@@ -181,6 +181,7 @@
                 
             <li class="second-level"><a href="#data-preparation-inside-the-analysis-code">Data preparation inside the analysis code</a></li>
                 
+                <li class="third-level"><a href="#switching-to-the-cleaned-files-nov-12">Switching to the cleaned files (Nov 12)</a></li>
             <li class="second-level"><a href="#colors-and-labels">Colors and labels</a></li>
                 
             <li class="second-level"><a href="#pictograph-versions">Pictograph versions</a></li>
@@ -389,7 +390,7 @@
 <p>Three charts were made before the research questions were narrowed from nine to six: Rio Grande water quality, seasonal canal flow, and Bernalillo river flow vs well levels. They answer dropped questions, so they aren't shown in the app, the report, or this site; their code stays in <code>analysis/charts.py</code> (<code>OUT_OF_SCOPE_CHARTS</code>) in case those questions come back.</p>
 <h2 id="how-the-code-is-organized">How the code is organized</h2>
 <pre><code>analysis/
-  data.py           loads every dataset into the shared column format (cleaned files + minimal prep of raw files)
+  data.py           loads James's cleaned files (and the extra USGS series in dataset 1), keeping his column names
   stats.py          trend statistics: annual means, Sen's slope, Mann-Kendall test, Spearman correlation
   theme.py          colors and the shared Plotly look (light and dark)
   icons.py          the small flat pictograms used by the pictograph versions of six charts
@@ -501,6 +502,52 @@ python -m analysis.write_docs          # refreshes the generated parts of this p
 </tbody>
 </table>
 <p>Wells in the aquifer-test file are told apart by name and location (<code>well_key</code>), not by <code>site_id</code>, because most OSE POD IDs are incomplete (see <a href="../data-cleaning/#still-open">Data cleaning</a>). Rows with the same well name and test date within 1 km of each other are treated as one well (the BIA-(RF)-033-2(10) Smelser Well was entered twice with slightly different coordinates).</p>
+<h3 id="switching-to-the-cleaned-files-nov-12">Switching to the cleaned files (Nov 12)</h3>
+<p>Micah finished the charts on Nov 3, before four of the datasets were cleaned, so <code>analysis/data.py</code> prepared those four from the raw files itself: converting UTM coordinates, joining the Rio Puerco gage heights to their visits, and so on. When James cleaned them on Nov 12, the code was changed to read his files instead, using his column names rather than renaming his columns back to the old ones. The charts' results didn't change.</p>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Before Nov 12</th>
+<th>Now</th>
+<th>What changed in the code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NM Bureau of Geology groundwater levels</td>
+<td>Raw <code>data2_groundwater_sandoval_county.csv</code>, prepared in <code>load_nmbgmr_levels()</code></td>
+<td><code>groundwater_levels_nmbgmr.csv</code></td>
+<td>The loader just reads the file. Charts label wells by <code>site_id</code>, since <code>site_name</code> is blank. The Placitas chart reads each reading's <code>measurement_method</code> from the cleaned file instead of opening the raw file.</td>
+</tr>
+<tr>
+<td>Rio Puerco at Cuba</td>
+<td>Three raw <code>data4_*.csv</code> files, joined in <code>load_rio_puerco()</code></td>
+<td><code>streamflow_measurements.csv</code></td>
+<td>Charts use <code>discharge_cfs</code> (was <code>flow_cfs</code>) and <code>measurement_type</code> (was <code>measurement_method</code>; Other is shown as "Observed (no measurable flow)"). The loader adds one column, <code>flowing</code> (<code>discharge_cfs</code> above 0).</td>
+</tr>
+<tr>
+<td>Well logs</td>
+<td>Raw <code>data7_Wells With Well Log Information.csv</code>, prepared in <code>load_well_logs()</code></td>
+<td><code>well_logs.csv</code></td>
+<td>Charts use <code>depth_to_first_water_ft</code> (was <code>first_water_ft</code>) and label wells by POD number. <code>date</code> is now when drilling finished, not when it started.</td>
+</tr>
+<tr>
+<td>Aquifer sensitivity</td>
+<td>Raw <code>data3_Aquifer_Sensitivity.csv</code>, read in <code>aquifer_sensitivity_classes()</code></td>
+<td><code>aquifer_sensitivity.csv</code></td>
+<td>The chart uses <code>polygon_id</code>, <code>sensitivity</code>, and <code>area_sq_deg</code> (were <code>OBJECTID</code>, <code>SENSITIVITY</code>, and <code>Shape__Area</code>), and the class name Moderate (was Mod).</td>
+</tr>
+</tbody>
+</table>
+<p>Each chart's source line now names the cleaned files, and the descriptions in <code>analysis/data.py</code>, <code>analysis/README.md</code>, and this page were updated to match. The chart images on this site and the report's figure files were remade.</p>
+<p><strong>Why the code changed, not just the file names.</strong> James's files use different column names and spell out Moderate. Pointed at his files with no other changes, the old code would have stopped every chart that uses the Rio Puerco visits, including both Cuba maps and the county map. It would also have quietly dropped the Moderate class (339 of the 613 areas) from the sensitivity chart and left the NM Bureau of Geology wells and the well logs without labels.</p>
+<p><strong>How it was checked.</strong> Every chart, including both versions of the six with pictograms, was drawn with the old code and the new code and compared. Every title, caption, and finding is the same, and the plotted values match; locations differ by less than 5 mm, from rounding in the cleaned files. Micah's tests (<code>analysis/test_stats.py</code>) pass, and every app page loads. The only visible differences:</p>
+<ul>
+<li>Well SJ 00809 now shows 1979 instead of 1978, because <code>date</code> in <code>well_logs.csv</code> is when drilling finished. It moves one year on the coverage timeline and in the map and chart labels.</li>
+<li>The app's Data sources page counts 451 NM Bureau of Geology readings instead of 456. The cleaned file leaves out the 5 dry-well readings, which the charts already skipped.</li>
+<li>The aquifer-sensitivity caption names the <code>area_sq_deg</code> column.</li>
+</ul>
 <h2 id="colors-and-labels">Colors and labels</h2>
 <p>Colors mean the same thing on every chart (defined in <code>analysis/theme.py</code> and checked for color-blind safety):</p>
 <ul>

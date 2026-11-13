@@ -172,21 +172,29 @@
             <li class="second-level"><a href="#cleaned-files">Cleaned files</a></li>
                 
                 <li class="third-level"><a href="#columns">Columns</a></li>
-                <li class="third-level"><a href="#wells-in-the-groundwater-file">Wells in the groundwater file</a></li>
+                <li class="third-level"><a href="#wells-in-the-usgs-groundwater-file">Wells in the USGS groundwater file</a></li>
             <li class="second-level"><a href="#running-the-script">Running the script</a></li>
                 
             <li class="second-level"><a href="#where-files-go">Where files go</a></li>
                 
             <li class="second-level"><a href="#how-each-file-was-cleaned">How each file was cleaned</a></li>
                 
-                <li class="third-level"><a href="#groundwater-levels">Groundwater levels</a></li>
+                <li class="third-level"><a href="#usgs-groundwater-levels">USGS groundwater levels</a></li>
                 <li class="third-level"><a href="#aquifer-tests">Aquifer tests</a></li>
+                <li class="third-level"><a href="#nm-bureau-of-geology-groundwater-levels">NM Bureau of Geology groundwater levels</a></li>
+                <li class="third-level"><a href="#rio-puerco-at-cuba">Rio Puerco at Cuba</a></li>
+                <li class="third-level"><a href="#well-logs">Well logs</a></li>
+                <li class="third-level"><a href="#aquifer-sensitivity">Aquifer sensitivity</a></li>
+            <li class="second-level"><a href="#what-the-checks-show">What the checks show</a></li>
+                
             <li class="second-level"><a href="#conventions-for-cleaned-files">Conventions for cleaned files</a></li>
                 
             <li class="second-level"><a href="#problems-and-decisions">Problems and decisions</a></li>
                 
                 <li class="third-level"><a href="#still-open">Still open</a></li>
-            <li class="second-level"><a href="#still-to-clean">Still to clean</a></li>
+            <li class="second-level"><a href="#not-cleaned">Not cleaned</a></li>
+                
+            <li class="second-level"><a href="#how-the-analysis-uses-these-files">How the analysis uses these files</a></li>
                 
     </ul>
 </div></div>
@@ -195,6 +203,7 @@
 <h1 id="2-data-cleaning">2. Data cleaning</h1>
 <p><strong>Lead:</strong> James Wauneka</p>
 <p>This stage turns the raw downloads into tables the analysis code can use directly. Cleaning makes the data correct and consistent; it doesn't draw conclusions. Averaging, trends, and narrowing to the Cuba area happen in the analysis stage.</p>
+<p>James cleaned the first two datasets on Oct 30 and the remaining four on Nov 12, so every dataset the analysis uses now comes from a cleaned file. His report on the cleaning, <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/project_notes/Sandoval_County_Water_Data_Report.pdf"><em>Sandoval County Water Data Report</em> (PDF)</a>, summarizes each file and lists the data problems the script found. This page draws on it.</p>
 <h2 id="cleaned-files">Cleaned files</h2>
 <table>
 <thead>
@@ -213,19 +222,55 @@
 <td>Monthly mean depth to water for 9 wells, June 1998 to September 2026</td>
 </tr>
 <tr>
+<td><a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/data/clean/groundwater_levels_nmbgmr.csv"><code>groundwater_levels_nmbgmr.csv</code></a></td>
+<td>451</td>
+<td>NM Bureau of Geology groundwater levels (<a href="../data-collection/#2-nm-bureau-of-geology-groundwater-levels">dataset 2</a>)</td>
+<td>Depth to water at 87 wells, 1997 to 2019, with each well's depth, casing, and completion date</td>
+</tr>
+<tr>
 <td><a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/data/clean/aquifer_tests.csv"><code>aquifer_tests.csv</code></a></td>
 <td>179</td>
-<td>NM Office of the State Engineer aquifer tests</td>
+<td>NM Office of the State Engineer aquifer tests (<a href="../data-collection/#other-raw-data-in-the-repository">other raw data</a>)</td>
 <td>One row per aquifer test in Sandoval County, 1930 to 2008, with formation, well construction, and hydraulic properties</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/data/clean/streamflow_measurements.csv"><code>streamflow_measurements.csv</code></a></td>
+<td>10</td>
+<td>Rio Puerco at Cuba, three files (<a href="../data-collection/#4-rio-puerco-at-cuba">dataset 4</a>)</td>
+<td>One row per USGS streamflow visit to gage 08332525, April 2019 to March 2026, with channel measurements and gage height</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/data/clean/well_logs.csv"><code>well_logs.csv</code></a></td>
+<td>6</td>
+<td>Wells with well logs (<a href="../data-collection/#7-wells-with-well-logs">dataset 7</a>)</td>
+<td>Drilling records for 6 wells in the San Juan sub-basin, finished 1979 to 2022</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/data/clean/aquifer_sensitivity.csv"><code>aquifer_sensitivity.csv</code></a></td>
+<td>613</td>
+<td>Aquifer sensitivity (<a href="../data-collection/#3-aquifer-sensitivity">dataset 3</a>)</td>
+<td>One row per mapped area, with its sensitivity class and size; no locations</td>
 </tr>
 </tbody>
 </table>
-<p>James's MATLAB script, <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs.m"><code>cleaning/clean_csvs.m</code></a>, makes both files. Both follow the <a href="#conventions-for-cleaned-files">conventions</a> below. The groundwater file was checked against the raw data: it has the same rows, dates, and values, with no duplicates.</p>
+<p>James's MATLAB script, <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs_Revised_2.m"><code>cleaning/clean_csvs_Revised_2.m</code></a>, makes all six files. His first script, <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs.m"><code>cleaning/clean_csvs.m</code></a>, makes only the first two, the same way. Every file follows the <a href="#conventions-for-cleaned-files">conventions</a> below, except that the sensitivity file lists map areas rather than sites, so it doesn't have the shared site and date columns. The USGS groundwater file was checked against the raw data: it has the same rows, dates, and values, with no duplicates.</p>
 <h3 id="columns">Columns</h3>
 <p><strong><code>groundwater_levels_monthly.csv</code>:</strong> <code>site_id</code>, <code>site_name</code>, <code>latitude</code>, <code>longitude</code>, <code>date</code>, <code>source</code>, <code>depth_to_water_ft</code></p>
+<p><strong><code>groundwater_levels_nmbgmr.csv</code>:</strong> <code>site_id</code>, <code>site_name</code>, <code>latitude</code>, <code>longitude</code>, <code>date</code>, <code>source</code>, <code>depth_to_water_ft</code>, <code>level_status</code>, <code>measurement_method</code>, <code>altitude_ft</code>, <code>well_depth_ft</code>, <code>casing_depth_ft</code>, <code>casing_diameter_ft</code>, <code>completion_date</code></p>
 <p><strong><code>aquifer_tests.csv</code>:</strong> <code>site_id</code>, <code>site_name</code>, <code>latitude</code>, <code>longitude</code>, <code>date</code>, <code>source</code>, <code>formation</code>, <code>well_depth_ft</code>, <code>screen_top_ft</code>, <code>screen_bottom_ft</code>, <code>depth_to_water_ft</code>, <code>pumping_rate_gpm</code>, <code>transmissivity_drawdown_ft2_per_day</code>, <code>transmissivity_recovery_ft2_per_day</code>, <code>storativity</code>, <code>specific_capacity_gpm_per_ft</code>, <code>hydraulic_conductivity_ft_per_day</code></p>
-<p>In both files, <code>depth_to_water_ft</code> is depth below land surface, so a larger number means a lower water table.</p>
-<h3 id="wells-in-the-groundwater-file">Wells in the groundwater file</h3>
+<p><strong><code>streamflow_measurements.csv</code>:</strong> <code>site_id</code>, <code>site_name</code>, <code>latitude</code>, <code>longitude</code>, <code>date</code>, <code>source</code>, <code>time_local</code>, <code>measurement_number</code>, <code>discharge_cfs</code>, <code>width_ft</code>, <code>area_ft2</code>, <code>velocity_ft_per_s</code>, <code>distance_from_gage_ft</code>, <code>location_from_gage</code>, <code>measurement_type</code>, <code>channel_stability</code>, <code>channel_material</code>, <code>channel_evenness</code>, <code>horizontal_velocity</code>, <code>vertical_velocity</code>, <code>longitudinal_velocity</code>, <code>gage_height_ft</code>, <code>measurement_rating</code>, <code>control_condition</code></p>
+<p><strong><code>well_logs.csv</code>:</strong> <code>site_id</code>, <code>site_name</code>, <code>latitude</code>, <code>longitude</code>, <code>date</code>, <code>source</code>, <code>start_date</code>, <code>log_file_date</code>, <code>borehole_depth_ft</code>, <code>depth_to_first_water_ft</code>, <code>water_source</code>, <code>sub_basin</code>, <code>plss_location</code>, <code>location_from_plss</code>, <code>utm_easting</code>, <code>utm_northing</code>, <code>driller</code>, <code>license_number</code></p>
+<p><strong><code>aquifer_sensitivity.csv</code>:</strong> <code>polygon_id</code>, <code>sensitivity</code>, <code>sensitivity_rank</code>, <code>area_sq_deg</code>, <code>perimeter_deg</code></p>
+<p>A few columns need a note:</p>
+<ul>
+<li><code>depth_to_water_ft</code> is depth below land surface, so a larger number means a lower water table. In <code>well_logs.csv</code>, <code>depth_to_first_water_ft</code> is where water was first found while drilling, not a current level.</li>
+<li><code>site_name</code> is blank in the NM Bureau of Geology and well-log files, because those sources don't name their wells. Use <code>site_id</code> (the well ID or POD number) instead.</li>
+<li><code>level_status</code> marks readings that may not be static water levels, mostly R (the well was recently pumped) and T (a nearby well was recently pumped).</li>
+<li>In <code>streamflow_measurements.csv</code>, a <code>measurement_type</code> of Other means the visit found no measurable flow (<code>discharge_cfs</code> is 0).</li>
+<li>In <code>well_logs.csv</code>, <code>date</code> is when drilling finished; <code>start_date</code> is when it began.</li>
+<li>In <code>aquifer_sensitivity.csv</code>, <code>sensitivity</code> is Less, Moderate, or High (<code>sensitivity_rank</code> 1 to 3), and area and perimeter are in degrees because the map layer uses latitude and longitude.</li>
+</ul>
+<h3 id="wells-in-the-usgs-groundwater-file">Wells in the USGS groundwater file</h3>
 <table>
 <thead>
 <tr>
@@ -305,11 +350,15 @@
 <p>Wells with an A or B suffix are at the same location as the well without one but are measured at different depths, so they stay separate.</p>
 <h2 id="running-the-script">Running the script</h2>
 <p>In MATLAB, set the current folder to the repository's root folder (the one that contains <code>data/</code>), then run one of these:</p>
-<pre><code>clean_csvs                  % make both cleaned files
-clean_csvs('groundwater')   % groundwater levels only
-clean_csvs('aquifer')       % aquifer tests only
+<pre><code>clean_csvs_Revised_2                  % make every cleaned file whose raw file is present
+clean_csvs_Revised_2('groundwater')   % USGS groundwater levels only
+clean_csvs_Revised_2('aquifer')       % aquifer tests only
+clean_csvs_Revised_2('nmbgmr')        % NM Bureau of Geology groundwater levels only
+clean_csvs_Revised_2('streamflow')    % Rio Puerco at Cuba only (reads all three data4 files)
+clean_csvs_Revised_2('welllogs')      % well logs only
+clean_csvs_Revised_2('sensitivity')   % aquifer sensitivity only
 </code></pre>
-<p>The script reads <code>data/water_flow_data_sandoval_county_sources.csv</code> (dataset 1) and <code>data/ose_aquifer_test_wells.csv</code>, and writes to <code>data/clean/</code>. As it runs, it prints checks such as row counts, duplicate rows, and the list of formation names, so problems are easy to spot.</p>
+<p>The script reads the raw files from <code>data/</code> and writes to <code>data/clean/</code>. If a raw file is missing, it skips that dataset instead of stopping. If a file was saved with extra characters in its name, such as a number a browser added to the start of a download, it finds and uses it. As it runs, it prints checks such as row counts, duplicate rows, and values that look wrong, so problems are easy to spot.</p>
 <h2 id="where-files-go">Where files go</h2>
 <table>
 <thead>
@@ -328,18 +377,23 @@ clean_csvs('aquifer')       % aquifer tests only
 <tr>
 <td>Cleaning scripts</td>
 <td><code>cleaning/</code></td>
-<td><code>cleaning/clean_csvs.m</code></td>
+<td><code>cleaning/clean_csvs_Revised_2.m</code></td>
 </tr>
 <tr>
 <td>Cleaned files</td>
 <td><code>data/clean/</code></td>
 <td><code>data/clean/aquifer_tests.csv</code></td>
 </tr>
+<tr>
+<td>James's report on the cleaning</td>
+<td><code>project_notes/</code></td>
+<td><code>project_notes/Sandoval_County_Water_Data_Report.pdf</code></td>
+</tr>
 </tbody>
 </table>
 <p>Every cleaned file is made by a script in <code>cleaning/</code> that reads the raw file and writes the cleaned one, so anyone can rerun it and get the same result. Python or MATLAB both work. If a step is done by hand in Excel, write it down under <a href="#how-each-file-was-cleaned">How each file was cleaned</a>.</p>
 <h2 id="how-each-file-was-cleaned">How each file was cleaned</h2>
-<h3 id="groundwater-levels">Groundwater levels</h3>
+<h3 id="usgs-groundwater-levels">USGS groundwater levels</h3>
 <ol>
 <li>Reads every column as text and standardizes the column names.</li>
 <li>Keeps groundwater-level rows (<code>parameter_code</code> 72019) that are monthly means (<code>interval_type</code> is <code>month</code> and <code>parent_statistic_name</code> is <code>Mean</code>). That leaves 2,673 rows.</li>
@@ -359,11 +413,56 @@ clean_csvs('aquifer')       % aquifer tests only
 <li>Sets <code>source</code> to <code>NM OSE</code> and puts the shared columns first.</li>
 <li>Checks for columns that are empty or identical in every row (none were), then sorts by site and date and writes the file.</li>
 </ol>
+<h3 id="nm-bureau-of-geology-groundwater-levels">NM Bureau of Geology groundwater levels</h3>
+<ol>
+<li>Reads every column as text and keeps Sandoval County rows. The county is spelled both <code>SANDOVAL</code> and <code>Sandoval</code>, so it compares them in capitals.</li>
+<li>Converts UTM easting and northing (NAD83, zone 13N) to latitude and longitude. The script warns if any row uses a different datum; none do.</li>
+<li>Renames columns to the shared names, such as <code>PointID</code> → <code>site_id</code>, <code>DateMeasured</code> → <code>date</code>, and <code>DepthToWaterBGS</code> → <code>depth_to_water_ft</code>, and sets <code>source</code> to <code>NMBGMR</code>. Leaves <code>site_name</code> blank, since the source doesn't name its wells. Converts <code>NULL</code> to blank and dates such as <code>8/12/1998</code> to <code>1998-08-12</code>. The measurement time isn't kept, because one well (PC-020) has its time in the time-zone column.</li>
+<li>Drops the 5 readings with no depth to water (all from wells recorded as dry, status D), leaving 451 of the 456 rows.</li>
+<li>Blanks one impossible casing diameter, 41 at PB-0019 (the others are 0.3 to 0.6 ft).</li>
+<li>Flags but keeps readings deeper than the well itself (NM-26928 reads up to 103 ft in a 100 ft well), and counts the 226 readings with a level-status code.</li>
+<li>Checks for duplicate site-and-date rows (there are none), then sorts by site and date and writes the file.</li>
+</ol>
+<h3 id="rio-puerco-at-cuba">Rio Puerco at Cuba</h3>
+<ol>
+<li>Reads the three USGS files: the channel measurements (one row per visit), the field measurements, and the station details.</li>
+<li>Checks that every measurement uses the same unit on every row (ft³/s, ft, ft², and ft/s), so the units can go into the column names, such as <code>discharge_cfs</code>.</li>
+<li>Takes the station name from the station file, and converts each visit's time from UTC to New Mexico time before taking the date.</li>
+<li>Joins gage height (USGS parameter 00065) from the field-measurement file by visit, with its rating and control condition. Only the four visits with flow have a gage height.</li>
+<li>Cleans the category columns: <code>Unspecified</code> becomes blank, and capitalization is made consistent (<code>main</code> and <code>Main</code>).</li>
+<li>Checks that discharge equals channel area times velocity (the four flowing visits agree within 1%) and reports missing measurement numbers: 12 to 15 aren't in the file, so there are no visits between April 2021 and April 2024.</li>
+<li>Drops columns that are the same on every row, such as the channel name, and writes one row per visit.</li>
+</ol>
+<h3 id="well-logs">Well logs</h3>
+<ol>
+<li>Drops the footnote line at the bottom of the file and keeps Sandoval County wells (county code <code>SA</code>): 6 wells.</li>
+<li>Trims the extra spaces in the POD numbers (<code>SJ  00809</code> → <code>SJ 00809</code>), which become <code>site_id</code>. Leaves <code>site_name</code> blank.</li>
+<li>Converts UTM coordinates (zone 13) to latitude and longitude, and records in <code>location_from_plss</code> whether a location was placed from the well's legal description (PLSS) rather than measured. Three were.</li>
+<li>Uses the date drilling finished as <code>date</code>, and keeps the start date and the date the log was filed.</li>
+<li>Blanks the latitude and longitude of SJ 04455 POD1, whose northing puts it about 80 km north, outside the county. Its UTM values are kept so it can be corrected.</li>
+<li>Flags but keeps a log filed before drilling started (SJ 01824) and two spellings of one driller's name under license 1357.</li>
+</ol>
+<h3 id="aquifer-sensitivity">Aquifer sensitivity</h3>
+<ol>
+<li>Reads the file's four columns: <code>OBJECTID</code>, <code>SENSITIVITY</code>, <code>Shape__Area</code>, and <code>Shape__Length</code>.</li>
+<li>Spells out the class names (<code>Mod</code> → <code>Moderate</code>) and adds <code>sensitivity_rank</code> (1 Less, 2 Moderate, 3 High) for sorting.</li>
+<li>Renames the area and perimeter to <code>area_sq_deg</code> and <code>perimeter_deg</code>: the map layer uses latitude and longitude, so they're in degrees.</li>
+<li>Checks for duplicate polygon IDs (there are none) and writes one row per mapped area, sorted by <code>polygon_id</code>.</li>
+</ol>
+<h2 id="what-the-checks-show">What the checks show</h2>
+<p>James's report also describes what the cleaned files contain. These points matter when using them:</p>
+<ul>
+<li><strong>NM Bureau of Geology groundwater levels:</strong> most readings come from one survey. 383 of the 451 were taken in 1997-1998, 18 in 1999, and 50 in 2016-2019, and 32 of the 87 wells have only one reading. 226 readings carry a level-status code, so filter on <code>level_status</code> before looking at trends.</li>
+<li><strong>Aquifer tests:</strong> transmissivity is reported in 117 of the 179 tests and differs more than tenfold between formations: the median is 690 ft²/day in the Santa Fe Group and 55 ft²/day in the Abo Sandstone. 54 tests have no formation listed.</li>
+<li><strong>Rio Puerco at Cuba:</strong> gage height doesn't predict flow here. A flow of 20.4 ft³/s read 4.61 ft in 2020, and 20.2 ft³/s read 3.05 ft in 2024, after the streambed changed from silt and mud to gravel.</li>
+<li><strong>Aquifer sensitivity:</strong> the areas add up to about 31 square degrees, roughly 310,000 km², which is about the size of New Mexico, and the largest single area (1.33 square degrees, High) is bigger than Sandoval County. So the file covers the whole state, not just the county. It has no shapes or coordinates, so it can't be matched to wells until the map layer itself is downloaded.</li>
+<li><strong>Well logs:</strong> SJ 01824 and SJ 03562 have the same coordinates because both were placed at the center of the same quarter-quarter section, not because they're the same well.</li>
+</ul>
 <h2 id="conventions-for-cleaned-files">Conventions for cleaned files</h2>
 <p>Every cleaned file follows the same rules, so the files can be combined and charted the same way.</p>
 <p><strong>File names:</strong> lowercase with underscores, describing what's inside, such as <code>groundwater_levels_monthly.csv</code>. No dates, versions, or "final" in names; GitHub keeps the history.</p>
 <p><strong>Column names:</strong> lowercase with underscores, with the unit at the end, such as <code>well_depth_ft</code> or <code>transmissivity_drawdown_ft2_per_day</code>.</p>
-<p><strong>Shared columns:</strong> every file starts with these, using the same names:</p>
+<p><strong>Shared columns:</strong> every file of sites starts with these, using the same names:</p>
 <table>
 <thead>
 <tr>
@@ -378,7 +477,7 @@ clean_csvs('aquifer')       % aquifer tests only
 </tr>
 <tr>
 <td><code>site_name</code></td>
-<td>The well or site name</td>
+<td>The well or site name, blank if the source doesn't name it</td>
 </tr>
 <tr>
 <td><code>latitude</code>, <code>longitude</code></td>
@@ -390,7 +489,7 @@ clean_csvs('aquifer')       % aquifer tests only
 </tr>
 <tr>
 <td><code>source</code></td>
-<td>Where the data came from, such as <code>USGS</code> or <code>NM OSE</code></td>
+<td>Where the data came from, such as <code>USGS</code>, <code>NMBGMR</code>, or <code>NM OSE</code></td>
 </tr>
 </tbody>
 </table>
@@ -408,48 +507,110 @@ clean_csvs('aquifer')       % aquifer tests only
 <table>
 <thead>
 <tr>
+<th>Dataset</th>
 <th>Problem</th>
 <th>Decision</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Aquifer tests</td>
 <td>One hydraulic conductivity value is a range, <code>11 to 21</code> (Centex American Gypsum Company well)</td>
 <td>Uses the midpoint, 16 ft/day</td>
 </tr>
 <tr>
+<td>Aquifer tests</td>
 <td>104 tests have <code>1/1/1900</code> as the start water-level date, meaning the date is unknown</td>
 <td>Treated as unknown. The date column isn't in the cleaned file.</td>
 </tr>
 <tr>
+<td>Aquifer tests</td>
 <td>30 tests are dated January 1, which may mean only the year is known</td>
 <td>Kept as is</td>
 </tr>
 <tr>
+<td>Aquifer tests</td>
 <td>Formation misspelled as <code>POINT LOOKOUT SAANDSTONE</code></td>
 <td>Fixed to <code>POINT LOOKOUT SANDSTONE</code></td>
 </tr>
 <tr>
+<td>Aquifer tests</td>
 <td>Many tests are missing measurements, such as formation (blank for 54 of 179 tests) and storativity (blank for 165)</td>
 <td>Left blank, as the conventions require</td>
+</tr>
+<tr>
+<td>NM Bureau of Geology</td>
+<td>County spelled both <code>SANDOVAL</code> and <code>Sandoval</code></td>
+<td>Treated as the same county</td>
+</tr>
+<tr>
+<td>NM Bureau of Geology</td>
+<td>Coordinates given only in UTM</td>
+<td>Converted to latitude and longitude</td>
+</tr>
+<tr>
+<td>NM Bureau of Geology</td>
+<td>5 readings from dry wells have no depth</td>
+<td>Dropped</td>
+</tr>
+<tr>
+<td>NM Bureau of Geology</td>
+<td>PB-0019 has a casing diameter of 41 (the others are 0.3 to 0.6 ft)</td>
+<td>Blanked</td>
+</tr>
+<tr>
+<td>NM Bureau of Geology</td>
+<td>NM-26928's water is deeper than the well (up to 103 ft in a 100 ft well)</td>
+<td>Flagged and kept</td>
+</tr>
+<tr>
+<td>NM Bureau of Geology</td>
+<td>PC-020's time is in the time-zone column</td>
+<td>Time not kept</td>
+</tr>
+<tr>
+<td>Rio Puerco at Cuba</td>
+<td><code>Unspecified</code> categories, and <code>main</code> vs <code>Main</code></td>
+<td>Blanked, and capitalization fixed</td>
+</tr>
+<tr>
+<td>Rio Puerco at Cuba</td>
+<td>Measurements 12 to 15 are missing</td>
+<td>Gap reported; nothing between April 2021 and April 2024</td>
+</tr>
+<tr>
+<td>Well logs</td>
+<td>Extra spaces in the POD numbers, and a footnote line at the bottom of the file</td>
+<td>Spaces trimmed and footnote dropped</td>
+</tr>
+<tr>
+<td>Well logs</td>
+<td>SJ 04455 POD1's northing puts it about 80 km north, outside the county</td>
+<td>Latitude and longitude blanked; UTM kept so it can be corrected</td>
+</tr>
+<tr>
+<td>Well logs</td>
+<td>SJ 01824's log was filed before drilling started</td>
+<td>Flagged and kept</td>
 </tr>
 </tbody>
 </table>
 <h3 id="still-open">Still open</h3>
 <ul>
-<li><strong>Incomplete well IDs in the aquifer-test file.</strong> In the raw file, 157 of the 179 <code>OSE POD ID</code> values are incomplete, and 85 are just <code>RG--</code>. As a result, <code>site_id</code> groups unrelated wells together: the cleaned file has 73 site IDs but about 149 distinct wells by name and location. Until this is fixed, the analysis should tell wells apart by <code>site_name</code>, <code>latitude</code>, and <code>longitude</code>, not by <code>site_id</code>.</li>
+<li><strong>Incomplete well IDs in the aquifer-test file.</strong> In the raw file, 157 of the 179 <code>OSE POD ID</code> values are incomplete, and 85 are just <code>RG--</code>. As a result, <code>site_id</code> groups unrelated wells together: the cleaned file has 73 site IDs but about 149 distinct wells by name and location. Until this is fixed, the analysis tells wells apart by <code>site_name</code>, <code>latitude</code>, and <code>longitude</code>, not by <code>site_id</code>.</li>
 <li><strong>One formation name is still misspelled.</strong> <code>AGUA ZARCA SANDSTONE MEMBER OF SIERRA NACIEMIENTO</code> should be <code>NACIMIENTO</code>. It can be added to the list of fixes in the script's <code>clean_formation</code> function.</li>
+<li><strong>Negative pumping rates.</strong> Five aquifer tests have pumping rates below zero, all from one 1980 test series at RG-24834 (wells SH-1 to SH-5, Abiquiu Tuff). A pumping rate can't be negative, so they were probably entered with the wrong sign. They're kept as is for now. The fix is to flip the sign if the original test reports confirm the values, or to blank them; until then, treat the Abiquiu Tuff's numbers with caution.</li>
+<li><strong>Negative water levels.</strong> Two aquifer tests have a depth to water below zero: the Wild Cherry Farm well (-25.84 ft, 2006) and Expl-3 (-9.1 ft, 2002). These probably aren't errors. They mean water stood above the ground, as in a flowing (artesian) well, so they're kept.</li>
+<li><strong>One large drop at PC-014.</strong> Its 2019 reading is about 50 ft deeper than its 1997-1998 readings, but it's a single reading. Confirm it before treating it as a decline. The <a href="../analysis/#4-placitas_remeasured">Placitas chart</a> on the Analysis page shows it.</li>
+<li><strong>One driller, two spellings.</strong> License 1357 is listed as both <code>BAILEY, MARK</code> and <code>BAILEY, MARKMANLENENER</code>, probably a typo for the same driller. Flagged and kept.</li>
 </ul>
-<h2 id="still-to-clean">Still to clean</h2>
-<p>These raw files aren't cleaned yet. See <a href="../data-collection/">Data collection</a> for what each one contains.</p>
+<h2 id="not-cleaned">Not cleaned</h2>
 <ul>
-<li><strong>NM Bureau of Geology groundwater levels</strong> (dataset 2): convert UTM easting and northing to latitude and longitude, after checking the zone and datum.</li>
-<li><strong>Rio Puerco at Cuba</strong> (dataset 4): the streamflow and gage-height measurements.</li>
-<li><strong>Wells with well logs</strong> (dataset 7): convert UTM coordinates to latitude and longitude, and trim the extra spaces in well IDs.</li>
-<li><strong>Other USGS measurements in dataset 1:</strong> streamflow and reservoir storage, if the analysis uses them, one cleaned file per measurement, following the groundwater-levels pattern. The stream water-quality measurements don't need cleaning, since the project no longer covers water quality.</li>
+<li><strong>Other USGS measurements in dataset 1.</strong> The charts that use streamflow read it straight from the raw file with <code>load_usgs_stats()</code>, which keeps one measurement and one interval type at a time (see <a href="../analysis/#data-preparation-inside-the-analysis-code">Analysis</a>). The stream water-quality measurements aren't cleaned, since the project no longer covers water quality.</li>
+<li><strong>Datasets 5 and 6</strong> are publications rather than data tables.</li>
 </ul>
-<p>Until these are cleaned, the analysis code does the minimum preparation needed to chart them (UTM-to-latitude/longitude conversion, date parsing, and the like) without changing the raw files; the steps are listed on the <a href="../analysis/#data-preparation-inside-the-analysis-code">Analysis</a> page. When a cleaned file is added here, only the matching loader in <code>analysis/data.py</code> needs to change.</p>
-<p>Datasets 3, 5, and 6 don't need cleaning: dataset 3 has no locations until its map layer is downloaded, and datasets 5 and 6 are publications rather than data tables.</p></div>
+<h2 id="how-the-analysis-uses-these-files">How the analysis uses these files</h2>
+<p>Since Nov 12, the analysis code reads all six cleaned files directly, with James's column names. How Micah's code was changed to use them is on the Analysis page, under <a href="../analysis/#switching-to-the-cleaned-files-nov-12">Switching to the cleaned files</a>.</p></div>
         
         
     </div>
