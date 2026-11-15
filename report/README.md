@@ -46,4 +46,4 @@ At the top of `report.tex`:
 
 ## Publishing the PDF
 
-The documentation site links to `docs/files/project_report.pdf`. After rebuilding, copy the new PDF there, commit, push, and run `mkdocs gh-deploy`.
+The documentation site links to `docs/files/project_report.pdf`. After rebuilding, copy the new PDF there, commit, push, and publish the site with `git fetch origin gh-pages` and then `mkdocs gh-deploy`.

@@ -101,7 +101,7 @@ docs/                Documentation site pages (MkDocs)
 docs/figures/        Chart images for the documentation site, made by analysis/export_figures.py
 docs/files/          Presentation slides, report PDF, dataset briefs, and other downloads
 report/              Final report LaTeX source and figures (see report/README.md)
-project_notes/       Project proposal, deadlines, and resource links
+project_notes/       Project proposal, James's cleaning report, deadlines, and resource links
 .devcontainer/       Codespaces setup
 .github/readme/      Chart images for this README in light and dark versions, made by make_images.py
 LICENSE              MIT License for the team's code and documentation
@@ -165,8 +165,11 @@ The documentation site is built with [MkDocs](https://www.mkdocs.org). Its pages
 3. Publish it to the documentation site:
 
 ```
+   git fetch origin gh-pages
    mkdocs gh-deploy
 ```
+
+   The `git fetch` gets the latest published version first. Without it, `mkdocs gh-deploy` fails with a rejected push if someone else has published the site since you last fetched.
 
 4. Commit and push your Markdown changes to `main` as usual, so the source stays in sync with the site.
 
@@ -176,7 +179,7 @@ The documentation site is built with [MkDocs](https://www.mkdocs.org). Its pages
 
 Each page of the app is its own file in `app_pages/`, and `ProjectApp.py` lists them in the sidebar menu.
 
-1. Create a new file in `app_pages/`, for example `app_pages/my_page.py`. Don't call `st.set_page_config` in it; `ProjectApp.py` already does.
+1. Create a new file in `app_pages/`, for example `app_pages/my_page.py`. `ProjectApp.py` sets the app's wide layout. Like the other pages, start the file with `st.set_page_config(page_title="My page", layout="wide")` to set the title on the browser tab.
 2. Add a line for it to the list in `ProjectApp.py`:
 
 ```python

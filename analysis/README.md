@@ -31,7 +31,7 @@ show_chart(charts.rio_puerco_visits)
 show_chart(charts.formation_properties, metric="specific_capacity_gpm_per_ft")   # charts with options
 ```
 
-Don't call `st.set_page_config` in a page; `ProjectApp.py` already does.
+Each page starts with its own `st.set_page_config(page_title=..., layout="wide")` to set the title on the browser tab, as the files in `app_pages/` do.
 
 **Use a chart outside the app:**
 
