@@ -48,10 +48,10 @@ Hover over or tap a task to see its dates.
 - Data cleaning finished by James on Nov 12: the remaining four datasets (NM Bureau of Geology groundwater levels, Rio Puerco at Cuba, well logs, and aquifer sensitivity) cleaned with a revised version of his MATLAB script, plus a written report on the cleaning and the data problems it found (see [Data cleaning](data-cleaning.md))
 - Analysis code switched to James's cleaned files on Nov 12, with every chart's results unchanged (see [Switching to the cleaned files](analysis.md#switching-to-the-cleaned-files-nov-12))
 - Water Estimator page, phone layout, and color theme added to the Streamlit app by Meckrem on Nov 12 (see [Streamlit app](streamlit-app.md))
+- Streamlit app finished by Meckrem on Nov 14: every page's charts grouped into tabs, legends folded into expandable sections, a phone-friendly layout on every page, a new color theme, and the Sandbox test page removed
+- Final report finished on Nov 15: the data cleaning section covers all six cleaned files, and the dashboard section describes the finished app with a screenshot (see [Final report](report.md))
 
 *Upcoming:*
 
-- **Sat, Nov 14:** Streamlit app, presentation slides, and team video finished
-- **Sun, Nov 15:** final report and documentation site finished
 - **Mon, Nov 16, 12 PM:** slides and team video submitted on Canvas
 - **Thu, Nov 19:** in-class presentation
