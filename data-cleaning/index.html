@@ -253,7 +253,7 @@
 </tr>
 </tbody>
 </table>
-<p>James's MATLAB script, <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs_Revised_2.m"><code>cleaning/clean_csvs_Revised_2.m</code></a>, makes all six files. His first script, <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs.m"><code>cleaning/clean_csvs.m</code></a>, makes only the first two, the same way. Every file follows the <a href="#conventions-for-cleaned-files">conventions</a> below, except that the sensitivity file lists map areas rather than sites, so it doesn't have the shared site and date columns. The USGS groundwater file was checked against the raw data: it has the same rows, dates, and values, with no duplicates.</p>
+<p>James's MATLAB script, <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs.m"><code>cleaning/clean_csvs.m</code></a>, makes all six files. Until Nov 15 it was named <code>clean_csvs_Revised_2.m</code>. His first version, which makes only the first two the same way, is kept as <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs_old.m"><code>cleaning/clean_csvs_old.m</code></a> for reference. Every file follows the <a href="#conventions-for-cleaned-files">conventions</a> below, except that the sensitivity file lists map areas rather than sites, so it doesn't have the shared site and date columns. The USGS groundwater file was checked against the raw data: it has the same rows, dates, and values, with no duplicates.</p>
 <h3 id="columns">Columns</h3>
 <p><strong><code>groundwater_levels_monthly.csv</code>:</strong> <code>site_id</code>, <code>site_name</code>, <code>latitude</code>, <code>longitude</code>, <code>date</code>, <code>source</code>, <code>depth_to_water_ft</code></p>
 <p><strong><code>groundwater_levels_nmbgmr.csv</code>:</strong> <code>site_id</code>, <code>site_name</code>, <code>latitude</code>, <code>longitude</code>, <code>date</code>, <code>source</code>, <code>depth_to_water_ft</code>, <code>level_status</code>, <code>measurement_method</code>, <code>altitude_ft</code>, <code>well_depth_ft</code>, <code>casing_depth_ft</code>, <code>casing_diameter_ft</code>, <code>completion_date</code></p>
@@ -350,13 +350,13 @@
 <p>Wells with an A or B suffix are at the same location as the well without one but are measured at different depths, so they stay separate.</p>
 <h2 id="running-the-script">Running the script</h2>
 <p>In MATLAB, set the current folder to the repository's root folder (the one that contains <code>data/</code>), then run one of these:</p>
-<pre><code>clean_csvs_Revised_2                  % make every cleaned file whose raw file is present
-clean_csvs_Revised_2('groundwater')   % USGS groundwater levels only
-clean_csvs_Revised_2('aquifer')       % aquifer tests only
-clean_csvs_Revised_2('nmbgmr')        % NM Bureau of Geology groundwater levels only
-clean_csvs_Revised_2('streamflow')    % Rio Puerco at Cuba only (reads all three data4 files)
-clean_csvs_Revised_2('welllogs')      % well logs only
-clean_csvs_Revised_2('sensitivity')   % aquifer sensitivity only
+<pre><code>clean_csvs                            % make every cleaned file whose raw file is present
+clean_csvs('groundwater')             % USGS groundwater levels only
+clean_csvs('aquifer')                 % aquifer tests only
+clean_csvs('nmbgmr')                  % NM Bureau of Geology groundwater levels only
+clean_csvs('streamflow')              % Rio Puerco at Cuba only (reads all three data4 files)
+clean_csvs('welllogs')                % well logs only
+clean_csvs('sensitivity')             % aquifer sensitivity only
 </code></pre>
 <p>The script reads the raw files from <code>data/</code> and writes to <code>data/clean/</code>. If a raw file is missing, it skips that dataset instead of stopping. If a file was saved with extra characters in its name, such as a number a browser added to the start of a download, it finds and uses it. As it runs, it prints checks such as row counts, duplicate rows, and values that look wrong, so problems are easy to spot.</p>
 <h2 id="where-files-go">Where files go</h2>
@@ -377,7 +377,7 @@ clean_csvs_Revised_2('sensitivity')   % aquifer sensitivity only
 <tr>
 <td>Cleaning scripts</td>
 <td><code>cleaning/</code></td>
-<td><code>cleaning/clean_csvs_Revised_2.m</code></td>
+<td><code>cleaning/clean_csvs.m</code></td>
 </tr>
 <tr>
 <td>Cleaned files</td>

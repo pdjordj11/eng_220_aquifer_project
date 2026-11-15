@@ -184,9 +184,11 @@
 <h1 id="4-streamlit-app">4. Streamlit app</h1>
 <p><strong>Lead:</strong> Meckrem Yousef</p>
 <p><a href="https://eng220aquiferproject.streamlit.app/">Open the live app</a></p>
-<p>The interactive dashboard presents the project's results. It's built with Streamlit, pandas, and Plotly, and runs from <code>ProjectApp.py</code> in the repository.</p>
+<p>The interactive dashboard presents the project's results. It's built with Streamlit, pandas, and Plotly, and runs from <code>ProjectApp.py</code> in the repository. Meckrem finished it on Nov 14.</p>
+<p><img alt="The app's Wells and aquifers page: the page menu on the left, the page's three chart tabs, and the well depth vs depth to water chart with its labeled findings" src="../figures/app_wells_and_aquifers.png" /></p>
+<p><em>The Wells and aquifers page on a computer screen. The page menu is on the left, the page's charts are in tabs, and each chart's scope, caption, and labeled findings are below it.</em></p>
 <h2 id="what-the-app-shows">What the app shows</h2>
-<p>Each page shows its charts with a one-line takeaway, what is plotted, the chart's scope (Cuba, the Cuba area, or Sandoval County), a caption, the findings labeled <em>Measured</em>, <em>Hypothesis</em>, or <em>Insufficient data</em>, and a "Data behind this chart" table with a CSV download. Charts are interactive: hover for exact values, drag to zoom, double-click to reset. They follow the app's light or dark theme. Six charts show small pictograms (wells, stream gages, river visits, rating balls); the <strong>Pictograph charts</strong> switch in the sidebar turns them off to show the plain versions used in the report (see <a href="../analysis/#pictograph-versions">Pictograph versions</a>).</p>
+<p>Each page shows its charts with a one-line takeaway, what is plotted, the chart's scope (Cuba, the Cuba area, or Sandoval County), a caption, the findings labeled <em>Measured</em>, <em>Hypothesis</em>, or <em>Insufficient data</em>, and a "Data behind this chart" table with a CSV download. Charts are interactive: hover for exact values, drag to zoom, double-click to reset. Six charts show small pictograms (wells, stream gages, river visits, rating balls); the <strong>Pictograph charts</strong> switch in the sidebar turns them off to show the plain versions used in the report (see <a href="../analysis/#pictograph-versions">Pictograph versions</a>).</p>
 <table>
 <thead>
 <tr>
@@ -208,28 +210,23 @@
 </tr>
 <tr>
 <td>Groundwater levels</td>
-<td>Monthly water levels at the 9 USGS monitoring wells, their trends, and Placitas wells re-measured after 20 years</td>
+<td>Three tabs: monthly water levels at the 9 USGS monitoring wells, their trends, and Placitas wells re-measured after 20 years</td>
 <td>1</td>
 </tr>
 <tr>
 <td>Wells and aquifers</td>
-<td>Well depth vs depth to water, depth to water by area, and aquifer-test properties by formation (choose the measurement from a menu)</td>
+<td>Three tabs: well depth vs depth to water, depth to water by area, and aquifer-test properties by formation (choose the measurement from a menu)</td>
 <td>2, 4</td>
 </tr>
 <tr>
 <td>Cuba case study</td>
-<td>Key numbers, a short answer to research question 3, a map of sites near Cuba, the nearest record in each dataset, the USGS Ojo Alamo depth map around Cuba, Ojo Alamo vs San Jose tests, and Rio Puerco visits</td>
+<td>Three key numbers and a short answer to research question 3, then five tabs: a map of sites near Cuba, the nearest record in each dataset, the USGS Ojo Alamo depth map around Cuba, Ojo Alamo vs San Jose tests, and Rio Puerco visits</td>
 <td>3, 4</td>
 </tr>
 <tr>
 <td>Data sources</td>
-<td>Dataset list and links, a timeline of monitoring coverage, a dataset-by-question evidence matrix, aquifer-sensitivity classes, and a table of groundwater-stress indicators</td>
+<td>Dataset list and links (in expandable sections), a timeline of monitoring coverage, a dataset-by-question evidence matrix, aquifer-sensitivity classes, and a table of groundwater-stress indicators</td>
 <td>5, 6</td>
-</tr>
-<tr>
-<td>Sandbox</td>
-<td>A test page with random data (not project results)</td>
-<td>-</td>
 </tr>
 <tr>
 <td>Water Estimator</td>
@@ -240,8 +237,15 @@
 </table>
 <p>The chart code lives in <code>analysis/</code> (see <a href="../analysis/">Analysis and visualizations</a>); each page file in <code>app_pages/</code> calls <code>show_chart(...)</code> for its charts. The maps use the free CARTO basemap, which needs an internet connection.</p>
 <h2 id="look-and-phone-layout">Look and phone layout</h2>
-<p>The app's colors are set in <code>.streamlit/config.toml</code> under <code>[theme]</code>: a blue background, a green accent, and light text. On narrow screens such as phones, a few lines of CSS at the top of <code>ProjectApp.py</code> reduce the side padding and shrink the headings, for every page.</p>
-<p>On Nov 12, the theme file was fixed so Streamlit could read it again. A block of Python had been pasted into it and its <code>[theme]</code> heading removed, so the app had been ignoring the file. The Python, which holds the phone-layout CSS, moved to <code>ProjectApp.py</code>.</p>
+<p>The app's colors are set in <code>.streamlit/config.toml</code> under <code>[theme]</code>: a navy background, a dark red sidebar, a green accent, and light text.</p>
+<p>Meckrem laid out every page to work on a phone as well as a computer:</p>
+<ul>
+<li><strong>Charts in tabs.</strong> Pages with several charts show them in tabs (such as <em>Hydrographs</em>, <em>Trends</em>, and <em>Placitas Remeasured</em>) instead of one long scroll.</li>
+<li><strong>Expandable sections.</strong> Each page's legend and longer explanations fold into an expandable section, so the first chart is near the top of the screen.</li>
+<li><strong>Narrow screens.</strong> On a phone, side padding shrinks, headings get smaller, and the Home page buttons and the Cuba case study's key numbers stack vertically. A few lines of CSS at the top of <code>ProjectApp.py</code> and of each page file do this.</li>
+<li><strong>Touch hints.</strong> The county map says "Pinch to zoom; tap a dot for its records."</li>
+</ul>
+<p>On Nov 12, the theme file was fixed so Streamlit could read it again: a block of Python had been pasted into it and its <code>[theme]</code> heading removed. The Python, which holds the phone-layout CSS, moved to <code>ProjectApp.py</code>. The Sandbox test page, which showed random data, was removed from the menu on Nov 13.</p>
 <h2 id="running-it-yourself">Running it yourself</h2>
 <p>In GitHub Codespaces, open a codespace from the repository's <strong>Code</strong> button and the app starts automatically. On your own computer:</p>
 <pre><code>pip install -r requirements.txt
