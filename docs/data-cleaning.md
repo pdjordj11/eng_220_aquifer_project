@@ -17,7 +17,7 @@ James cleaned the first two datasets on Oct 30 and the remaining four on Nov 12,
 | [`well_logs.csv`](https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/data/clean/well_logs.csv) | 6 | Wells with well logs ([dataset 7](data-collection.md#7-wells-with-well-logs)) | Drilling records for 6 wells in the San Juan sub-basin, finished 1979 to 2022 |
 | [`aquifer_sensitivity.csv`](https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/data/clean/aquifer_sensitivity.csv) | 613 | Aquifer sensitivity ([dataset 3](data-collection.md#3-aquifer-sensitivity)) | One row per mapped area, with its sensitivity class and size; no locations |
 
-James's MATLAB script, [`cleaning/clean_csvs_Revised_2.m`](https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs_Revised_2.m), makes all six files. His first script, [`cleaning/clean_csvs.m`](https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs.m), makes only the first two, the same way. Every file follows the [conventions](#conventions-for-cleaned-files) below, except that the sensitivity file lists map areas rather than sites, so it doesn't have the shared site and date columns. The USGS groundwater file was checked against the raw data: it has the same rows, dates, and values, with no duplicates.
+James's MATLAB script, [`cleaning/clean_csvs.m`](https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs.m), makes all six files. Until Nov 15 it was named `clean_csvs_Revised_2.m`. His first version, which makes only the first two the same way, is kept as [`cleaning/clean_csvs_old.m`](https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/cleaning/clean_csvs_old.m) for reference. Every file follows the [conventions](#conventions-for-cleaned-files) below, except that the sensitivity file lists map areas rather than sites, so it doesn't have the shared site and date columns. The USGS groundwater file was checked against the raw data: it has the same rows, dates, and values, with no duplicates.
 
 ### Columns
 
@@ -62,13 +62,13 @@ Wells with an A or B suffix are at the same location as the well without one but
 
 In MATLAB, set the current folder to the repository's root folder (the one that contains `data/`), then run one of these:
 
-    clean_csvs_Revised_2                  % make every cleaned file whose raw file is present
-    clean_csvs_Revised_2('groundwater')   % USGS groundwater levels only
-    clean_csvs_Revised_2('aquifer')       % aquifer tests only
-    clean_csvs_Revised_2('nmbgmr')        % NM Bureau of Geology groundwater levels only
-    clean_csvs_Revised_2('streamflow')    % Rio Puerco at Cuba only (reads all three data4 files)
-    clean_csvs_Revised_2('welllogs')      % well logs only
-    clean_csvs_Revised_2('sensitivity')   % aquifer sensitivity only
+    clean_csvs                            % make every cleaned file whose raw file is present
+    clean_csvs('groundwater')             % USGS groundwater levels only
+    clean_csvs('aquifer')                 % aquifer tests only
+    clean_csvs('nmbgmr')                  % NM Bureau of Geology groundwater levels only
+    clean_csvs('streamflow')              % Rio Puerco at Cuba only (reads all three data4 files)
+    clean_csvs('welllogs')                % well logs only
+    clean_csvs('sensitivity')             % aquifer sensitivity only
 
 The script reads the raw files from `data/` and writes to `data/clean/`. If a raw file is missing, it skips that dataset instead of stopping. If a file was saved with extra characters in its name, such as a number a browser added to the start of a download, it finds and uses it. As it runs, it prints checks such as row counts, duplicate rows, and values that look wrong, so problems are easy to spot.
 
@@ -77,7 +77,7 @@ The script reads the raw files from `data/` and writes to `data/clean/`. If a ra
 | What | Where | Example |
 |---|---|---|
 | Raw downloads (never edited) | `data/` | `data/ose_aquifer_test_wells.csv` |
-| Cleaning scripts | `cleaning/` | `cleaning/clean_csvs_Revised_2.m` |
+| Cleaning scripts | `cleaning/` | `cleaning/clean_csvs.m` |
 | Cleaned files | `data/clean/` | `data/clean/aquifer_tests.csv` |
 | James's report on the cleaning | `project_notes/` | `project_notes/Sandoval_County_Water_Data_Report.pdf` |
 

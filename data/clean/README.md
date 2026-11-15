@@ -13,4 +13,4 @@ Every file uses the same conventions: lowercase names with underscores, units at
 | `well_logs.csv` | Drilling records for 6 wells, finished 1979 to 2022 | Dataset 7, `data7_Wells With Well Log Information.csv` |
 | `aquifer_sensitivity.csv` | 613 mapped areas with a sensitivity class and size, no locations | Dataset 3, `data3_Aquifer_Sensitivity.csv` |
 
-All six are made by `cleaning/clean_csvs_Revised_2.m`.
+All six are made by `cleaning/clean_csvs.m`.

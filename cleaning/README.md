@@ -2,7 +2,7 @@
 
 Scripts that read raw files from `data/`, clean them, and write the results to `data/clean/`. Python (`.py`) or MATLAB (`.m`) both work.
 
-`clean_csvs_Revised_2.m` makes all six cleaned files. The earlier `clean_csvs.m` makes only the first two, the same way.
+`clean_csvs.m` makes all six cleaned files. Until Nov 15 it was named `clean_csvs_Revised_2.m`. James's first version, which makes only the first two the same way, is kept as `clean_csvs_old.m` for reference.
 
 | Reads (in `data/`) | Writes (in `data/clean/`) |
 |---|---|
@@ -15,12 +15,12 @@ Scripts that read raw files from `data/`, clean them, and write the results to `
 
 To run it, set MATLAB's current folder to the repository root (the folder that contains `data/`), then run one of these:
 
-    clean_csvs_Revised_2                  % make every cleaned file whose raw file is present
-    clean_csvs_Revised_2('groundwater')   % USGS groundwater levels only
-    clean_csvs_Revised_2('aquifer')       % aquifer tests only
-    clean_csvs_Revised_2('nmbgmr')        % NM Bureau of Geology groundwater levels only
-    clean_csvs_Revised_2('streamflow')    % Rio Puerco at Cuba only
-    clean_csvs_Revised_2('welllogs')      % well logs only
-    clean_csvs_Revised_2('sensitivity')   % aquifer sensitivity only
+    clean_csvs                            % make every cleaned file whose raw file is present
+    clean_csvs('groundwater')             % USGS groundwater levels only
+    clean_csvs('aquifer')                 % aquifer tests only
+    clean_csvs('nmbgmr')                  % NM Bureau of Geology groundwater levels only
+    clean_csvs('streamflow')              % Rio Puerco at Cuba only
+    clean_csvs('welllogs')                % well logs only
+    clean_csvs('sensitivity')             % aquifer sensitivity only
 
 Never edit the raw files in `data/`. What the script does to each file, the problems it found, and the naming and format rules for cleaned files are on the [Data cleaning page](https://pdjordj11.github.io/eng_220_aquifer_project/data-cleaning/). James's report on the cleaning is `project_notes/Sandoval_County_Water_Data_Report.pdf`.
