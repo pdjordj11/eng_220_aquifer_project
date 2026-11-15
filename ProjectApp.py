@@ -27,7 +27,7 @@ pg = st.navigation([
     st.Page("app_pages/groundwater.py", title="Groundwater levels", icon=":material/water_drop:"),
     st.Page("app_pages/wells.py", title="Wells and aquifers", icon=":material/layers:"),
     st.Page("app_pages/cuba.py", title="Cuba case study", icon=":material/location_on:"),
-    st.Page("app_pages/Waterestimater.py", title="Water Estimater", icon=":material/water_drop:"),
+    st.Page("app_pages/Waterestimator.py", title="Water Estimator", icon=":material/water_drop:"),
     st.Page("app_pages/data_sources.py", title="Data sources", icon=":material/database:"),
 ])
 # Chart style for every page: six charts can show small pictograms (wells, gages, river visits,
