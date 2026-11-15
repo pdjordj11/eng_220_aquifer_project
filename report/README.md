@@ -9,7 +9,7 @@ LaTeX source for the project report, styled to match the project proposal (two c
 | `figures/` | Chart images made by `analysis/export_figures.py`: plain PDFs for the report, PNGs with titles for slides |
 | `analysis_figures.tex` | A ready-made figure block for every chart, also made by `export_figures.py` |
 
-Every section of the report is written. Two orange notes in brackets mark paragraphs to update when the remaining datasets are cleaned and when the app is finished.
+The report is finished. The final version, dated November 16, 2026, is built with both switches below turned off.
 
 ## Editing and building
 
@@ -46,4 +46,4 @@ At the top of `report.tex`:
 
 ## Publishing the PDF
 
-The documentation site links to `docs/files/project_report_draft.pdf`. After rebuilding, copy the new PDF there, commit, push, and run `mkdocs gh-deploy`.
+The documentation site links to `docs/files/project_report.pdf`. After rebuilding, copy the new PDF there, commit, push, and run `mkdocs gh-deploy`.

@@ -14,9 +14,9 @@
 % ---------------------------------------------------------------------
 %  Switches
 % ---------------------------------------------------------------------
-\newif\ifdraftnotes \draftnotestrue   % \draftnotesfalse hides every [orange note]
+\newif\ifdraftnotes \draftnotesfalse   % \draftnotesfalse hides every [orange note]
 \newif\ifcoverpage  \coverpagefalse   % \coverpagetrue adds a proposal-style cover page
-\newif\ifroughdraft \roughdrafttrue    % \roughdraftfalse removes the red ROUGH DRAFT stamp
+\newif\ifroughdraft \roughdraftfalse    % \roughdraftfalse removes the red ROUGH DRAFT stamp
 
 % ---------------------------------------------------------------------
 %  Fonts and text
@@ -449,22 +449,30 @@ findings.
 \subsection{Data Cleaning}
 Cleaning makes the data correct and consistent without drawing conclusions; averaging, trends,
 and narrowing to the Cuba area happen in the analysis. Raw downloads are kept unedited. A MATLAB
-script, \texttt{cleaning/clean\_csvs.m}, reads them and writes the cleaned files
+script, \texttt{cleaning/clean\_csvs.m}, reads them and writes the six cleaned files
 (Table~\ref{tab:cleaned}), so anyone can rerun it and get the same result. As it runs, it prints
-checks such as row counts, duplicate rows, and the list of formation names.
+checks such as row counts, duplicate rows, and values that look wrong. A separate report on the
+cleaning \citep{wauneka2026cleaning} describes each file and every problem the script found.
 
 \begin{table}[t]
-  \caption{Cleaned files produced so far.}
+  \caption{The six cleaned files.}
   \label{tab:cleaned}
   \footnotesize
   \begin{tabularx}{\linewidth}{@{}>{\raggedright}p{1.15in}r>{\raggedright\arraybackslash}X@{}}
     \toprule
     \textbf{File} & \textbf{Rows} & \textbf{Contents} \\
     \midrule
-    \nolinkurl{groundwater_levels_monthly.csv} & 2,673 & Monthly mean depth to water at
+    \texttt{groundwater\_\allowbreak{}levels\_\allowbreak{}monthly.csv} & 2,673 & Monthly mean depth to water at
       9 wells, June 1998 to September 2026 \\
-    \nolinkurl{aquifer_tests.csv} & 179 & One row per aquifer test in Sandoval County, 1930 to
+    \texttt{aquifer\_\allowbreak{}tests.csv} & 179 & One row per aquifer test in Sandoval County, 1930 to
       2008, with 17 columns \\
+    \texttt{groundwater\_\allowbreak{}levels\_\allowbreak{}nmbgmr.csv} & 451 & Depth to water at 87 NM Bureau of Geology
+      wells, 1997 to 2019 \\
+    \texttt{streamflow\_\allowbreak{}measurements.csv} & 10 & USGS streamflow visits to the Rio Puerco at Cuba,
+      2019 to 2026 \\
+    \texttt{well\_\allowbreak{}logs.csv} & 6 & Drilling records for 6 wells, finished 1979 to 2022 \\
+    \texttt{aquifer\_\allowbreak{}sensitivity.csv} & 613 & Mapped areas with a sensitivity class and size; no
+      locations \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -474,7 +482,8 @@ Every cleaned file starts with the same six columns: site ID, site name, latitud
 date, and source. Each has one row per measurement, sorted by site and date. Numbers are stored
 without units or commas, dates are written as \mbox{YYYY-MM-DD}, and column names end with their unit,
 such as \texttt{well\_depth\_ft}. Missing values are left blank rather than filled with
-placeholders such as 0 or $-9999$, which a chart would plot as real values.
+placeholders such as 0 or $-9999$, which a chart would plot as real values. The sensitivity file
+is the one exception to the shared columns: it lists map areas rather than sites.
 
 \subsubsection{Groundwater levels}
 From the USGS statistics, the script keeps the depth-to-groundwater rows that are monthly means
@@ -499,13 +508,30 @@ uppercase, and fixing a misspelling. Three decisions were needed:
 Many tests are missing values, such as the formation (54 tests) and storativity (165 tests); these
 cells are left blank.
 
+\subsubsection{Bureau of Geology water levels}
+The script keeps the Sandoval County rows, converts the UTM coordinates (NAD83, zone~13N) to
+latitude and longitude, and drops the 5 readings from wells recorded as dry, leaving 451 of 456.
+It blanks one impossible casing diameter and flags, but keeps, readings deeper than the well itself.
+
+\subsubsection{Rio Puerco at Cuba}
+The script joins the three USGS files into one row per visit, converts visit times from UTC to New
+Mexico time, and attaches the gage height measured on the four visits with flow. It checks that
+discharge equals channel area times velocity (the four flowing visits agree within 1\%) and
+reports a gap: no visits between April 2021 and April 2024.
+
+\subsubsection{Well logs and aquifer sensitivity}
+For the well logs, the script trims the padded well IDs, converts the UTM coordinates, records which
+locations were placed from a well's legal description, and blanks the location of SJ~04455~POD1,
+whose northing falls outside the county. For the sensitivity file, it spells out the class names and
+renames the area and perimeter to show they are in degrees. The areas add up to about the size of
+New Mexico, so the layer covers the whole state, and it has no locations to match to wells.
+
 \subsubsection{Open issues}
 Most of the State Engineer's well IDs in the aquifer-test file are incomplete: 157 of the 179 are
 partial, so the cleaned file has 73 site IDs for about 149 distinct wells. The analysis therefore
-tells wells apart by name and location rather than by ID. The Bureau of Geology water levels, the
-Rio Puerco measurements, and the well logs still need cleaning; the first and last of these also
-need their UTM coordinates converted to latitude and longitude.
-\draftnote{Update this paragraph once the remaining files are cleaned.}
+tells wells apart by name and location rather than by ID. Five pumping rates, all from one 1980
+test series at RG-24834 in the Abiquiu Tuff, are negative and were probably entered with the wrong
+sign; they are kept as recorded until the original test reports are checked.
 
 \subsection{Analysis}
 The analysis focuses on measurable indicators, such as depth to water, water-level change over
@@ -515,9 +541,9 @@ are sparse, the results say so instead of filling the gaps.
 All analysis code is in the \texttt{analysis/} folder of the repository. Each chart is a Python
 function that returns the figure together with its takeaway, caption, scope, and labeled findings,
 so the app, this report, and the documentation show the same numbers; every chart is reproduced on
-the documentation site's \href{https://pdjordj11.github.io/eng_220_aquifer_project/analysis/}{Analysis page}. Datasets not yet cleaned (NMBGMR water levels, the Rio
-Puerco visits, and the OSE well logs) receive only minimal preparation in code, such as converting
-UTM zone~13 coordinates to latitude and longitude; the raw files are never changed.
+the documentation site's \href{https://pdjordj11.github.io/eng_220_aquifer_project/analysis/}{Analysis page}. Except for the USGS streamflow
+statistics, every dataset comes from a cleaned file: the code reads the cleaned files with their own
+column names and adds only analysis columns, such as whether the river was flowing on a visit.
 
 \emph{Water-level trends (RQ1).} Monthly mean depths to water were averaged into annual means,
 using only years with at least 9 months of data. Each well's trend is Sen's slope (the median of all
@@ -549,15 +575,29 @@ Each finding is labeled as one of the following:
 \end{itemize}
 
 \subsection{Interactive Dashboard}
-Results are presented in an interactive Streamlit dashboard built with pandas and Plotly. Code
-and documentation are maintained on GitHub \citep{team23_repo}. The dashboard uses the same chart
-functions as this report. Besides a home page, it has five pages: a county map of every site; the
-groundwater-level records and trends (RQ1); well depth, depth to water, and aquifer properties by
-area and formation (RQ2, RQ4); the Cuba case study (RQ3, RQ4); and data sources with monitoring
-coverage and the groundwater-stress indicators (RQ5, RQ6). Each chart is shown with its takeaway,
-its scope (Cuba, the Cuba area, or Sandoval County), a caption, its labeled findings, and the data
-behind it, which visitors can download. Charts can be zoomed and hovered for exact values.
-\draftnote{Dashboard lead: update this paragraph if the app's pages change before Nov 14.}
+Results are presented in an interactive Streamlit dashboard built with pandas and Plotly
+(Fig.~\ref{fig:app}). Code and documentation are maintained on GitHub \citep{team23_repo}. The
+dashboard uses the same chart functions as this report. Besides a home page, it has six pages: a
+county map of every site; the groundwater-level records and trends (RQ1); well depth, depth to
+water, and aquifer properties by area and formation (RQ2, RQ4); the Cuba case study (RQ3, RQ4); a
+household water-use estimator; and data sources with monitoring coverage and the
+groundwater-stress indicators (RQ5, RQ6). Each chart is shown with its takeaway, its scope (Cuba,
+the Cuba area, or Sandoval County), a caption, its labeled findings, and the data behind it, which
+visitors can download. Charts can be zoomed and hovered for exact values. Each page groups its
+charts into tabs and folds legends and longer explanations into expandable sections, so the pages
+also work on a phone. The water-use estimator adds up a household's daily use from showers, toilet
+flushes, faucets, laundry, and dishwasher loads, compares it with a New Mexico residential average,
+and estimates a monthly water bill from rates the user can change.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.72\textwidth]{app_wells_and_aquifers}
+  \caption{The dashboard's Wells and aquifers page: the page menu (left), the page's three chart
+  tabs, and the well depth vs depth to water chart with its takeaway as the title. Each chart's scope,
+  caption, and labeled findings appear below it. Live at
+  \href{https://eng220aquiferproject.streamlit.app/}{\nolinkurl{eng220aquiferproject.streamlit.app}}.}
+  \label{fig:app}
+\end{figure*}
 
 % =====================================================================
 \section{Results}\label{sec:results}
@@ -903,12 +943,13 @@ rerun to answer whether Cuba's aquifer is declining.
   \item[P.~Djordjevic:] GitHub workflow, documentation, final report, presentation, and video.
   \item[D.~Gonzales:] data acquisition: collected seven datasets and wrote a research brief for
         each, plus a plotting guide comparing them.
-  \item[J.~Wauneka:] data cleaning: wrote the MATLAB script that produces the cleaned
-        groundwater-level and aquifer-test files.
+  \item[J.~Wauneka:] data cleaning: wrote the MATLAB script that produces all six cleaned
+        files, and a report documenting each file and the data problems found.
   \item[M.~Watkins:] analysis code and visualizations: wrote the analysis package (data loaders,
         trend statistics, and 15 charts with labeled findings) that feeds the app, this report's
         figures, and the documentation site.
-  \item[M.~Yousef:] Streamlit app design and development.
+  \item[M.~Yousef:] Streamlit app design and development: page layout and color theme,
+        phone-friendly tabs and expandable sections, and the water-use estimator.
 \end{description}
 
 \section*{Acknowledgments}
