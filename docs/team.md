@@ -21,7 +21,7 @@ Each member describes their own contributions here.
 
 ### James Wauneka
 
-*To be written.*
+At the start of our project, my team pulled together eight raw CSV datasets that needed a lot of work before anyone could actually use them. I handled the data prep side of things and used MATLAB to clean, standardize, and transform all eight raw files into reliable, analysis-ready datasets. Getting that done meant everyone on the team was working from the exact same numbers we knew we could trust. Those cleaned files ended up supporting the rest of our project—helping us answer our six core research questions, feeding clean data into our web app, and giving us consistent results to use in our final report and project documentation.
 
 ### Micah Watkins
 
