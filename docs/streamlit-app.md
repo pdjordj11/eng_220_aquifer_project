@@ -37,7 +37,7 @@ Meckrem laid out every page to work on a phone as well as a computer:
 - **Narrow screens.** On a phone, side padding shrinks, headings get smaller, and the Home page buttons and the Cuba case study's key numbers stack vertically. A few lines of CSS at the top of `ProjectApp.py` and of each page file do this.
 - **Touch hints.** The county map says "Pinch to zoom; tap a dot for its records."
 
-On Nov 12, the theme file was fixed so Streamlit could read it again: a block of Python had been pasted into it and its `[theme]` heading removed. The Python, which holds the phone-layout CSS, moved to `ProjectApp.py`. The Sandbox test page, which showed random data, was removed from the menu on Nov 13.
+On Nov 12, the theme file was fixed so Streamlit could read it again: a block of Python had been pasted into it and its `[theme]` heading removed. The Python, which holds the phone-layout CSS, moved to `ProjectApp.py`. The Sandbox test page, which showed random data, was removed from the menu on Nov 13, and its file (`app_pages/sandbox.py`) was deleted on Nov 15.
 
 ## Running it yourself
 
