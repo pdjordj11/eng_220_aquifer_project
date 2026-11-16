@@ -538,7 +538,9 @@ The analysis focuses on measurable indicators, such as depth to water, water-lev
 time, well depth, aquifer unit, and hydraulic properties from aquifer tests, rather than a full
 hydrologic model. Where records
 are sparse, the results say so instead of filling the gaps.
-All analysis code is in the \texttt{analysis/} folder of the repository. Each chart is a Python
+All analysis code is in the \texttt{analysis/} folder of the repository. It was written with an AI
+coding tool (Claude, by Anthropic); the analysis lead decided what to build and checked the results,
+and every number in the figures and their captions is computed from the data by the code. Each chart is a Python
 function that returns the figure together with its takeaway, caption, scope, and labeled findings,
 so the app, this report, and the documentation show the same numbers; every chart is reproduced on
 the documentation site's \href{https://pdjordj11.github.io/eng_220_aquifer_project/analysis/}{Analysis page}. Except for the USGS streamflow
@@ -945,9 +947,10 @@ rerun to answer whether Cuba's aquifer is declining.
         each, plus a plotting guide comparing them.
   \item[J.~Wauneka:] data cleaning: wrote the MATLAB script that produces all six cleaned
         files, and a report documenting each file and the data problems found.
-  \item[M.~Watkins:] analysis code and visualizations: wrote the analysis package (data loaders,
-        trend statistics, and 15 charts with labeled findings) that feeds the app, this report's
-        figures, and the documentation site.
+  \item[M.~Watkins:] analysis and visualizations: used an AI coding tool (Claude) to build the
+        analysis package (data loaders, trend statistics, and 15 charts with labeled findings) that
+        feeds the app, this report's figures, and the documentation site; decided what to build, set
+        up AI grading of the charts, and checked the results.
   \item[M.~Yousef:] Streamlit app design and development: page layout and color theme,
         phone-friendly tabs and expandable sections, and the water-use estimator.
 \end{description}

@@ -1,6 +1,6 @@
 # Visualization grading rubric
 
-Written for this project because the course didn't provide a chart rubric. It turns the
+Drafted by Claude (an AI coding tool) at Micah's request, because the course didn't provide a chart rubric. It turns the
 project's own rules into scores, so every chart is judged against what the team already
 agreed on:
 

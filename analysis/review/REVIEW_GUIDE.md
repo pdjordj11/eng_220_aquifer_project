@@ -130,9 +130,9 @@ After any change: `python -m analysis.export_figures` then `python -m analysis.w
 
 ## 6. How the charts were graded
 
-No course rubric for charts existed, so one was written from the project's own rules (proposal,
+No course rubric for charts existed, so Claude drafted one from the project's own rules (proposal,
 Dylan's plotting guide and briefs, James's conventions) plus standard chart practice:
-`analysis/review/RUBRIC.md`. Each round a fresh reviewer graded every chart blind, and the charts
+`analysis/review/RUBRIC.md`. Each round a fresh AI reviewer graded every chart blind, and the charts
 were fixed from the feedback. Scores are in `analysis/review/score_history.md`:
 
 | Round | Overall (out of 100) |
@@ -150,22 +150,34 @@ reviews used the original nine research questions; the charts have since been re
 
 ## 7. Your slide and your video
 
-**Slide 10 is filled in** (what I did, how I did it, what I learned, and the nearest-records chart
-with a caption), and slide 7's "Analyze" step says "Trend statistics and 15 charts with labeled
-findings". Edit the wording in PowerPoint if you'd like it in your own voice.
+**Slide 10:** *What I did:* "Turned our cleaned data into 15 charts that answer our six research
+questions, for the app, report, and docs." *How I did it:* "I used Claude, an AI coding tool, to
+write the code. I decided what to build and checked the charts." *What I learned:* "AI made the
+coding fast. The hard part was making sure each chart only claimed what the data could show."
+Slide 7's Tools line lists "Claude (AI)".
 
-**Talking points for your video** (due Nov 15, about your part):
+**Script for slide 10** (about a minute):
 
-1. My job: turn the cleaned data into charts that answer our research questions, for the app, the
-   report, and the docs site.
-2. How: Python, pandas, and Plotly. One function per chart returns the figure together with its
-   takeaway, caption, scope, and labeled findings, so every number matches everywhere. Trends use
-   Sen's slope and the Mann-Kendall test.
-3. Show two charts: the nearest-records chart (the Cuba data gap: the nearest repeated water-level
-   record is 38 km away) and the groundwater hydrographs (5 of 9 monitored wells falling; Sandia up
-   about 13 ft since 2007). Flip the pictograph switch in the app to show the pictograph versions.
-4. What I learned: being honest with thin data. Every chart says whether it describes Cuba or the
-   rest of the county, and every finding is labeled measured, hypothesis, or insufficient data.
+> I worked on the analysis and visualizations. That's the 15 charts that answer our six research
+> questions, which show up in the app, the report, and the docs.
+>
+> To build them, I used Claude, an AI coding tool. It wrote the Python, and I told it what to make
+> and checked what it made. To keep the quality up, I had a second AI grade every chart against a
+> rubric based on our proposal and Dylan's plotting guide. We went through four rounds of fixes, and
+> the score went from 72 to 86 out of 100. I decided when it was good enough, asked for the
+> pictogram versions, and cut three charts when our research questions changed. Then I tested the
+> app myself and merged everything in with a pull request.
+>
+> *[point to the chart]* This chart shows our biggest finding. The closest well with repeated
+> water-level measurements is 38 kilometers from Cuba, so the data can't tell us whether Cuba's
+> aquifer is running low.
+>
+> The main thing I learned is that AI makes the coding fast, but it doesn't do the checking for
+> you. With data this thin, making sure each chart only said what the data could back up was the
+> most important part.
+
+The Team page, the Analysis page ("How this was built"), the report's Methods and Author
+Contributions, and this folder describe how the analysis was built the same way.
 
 ## 8. Getting it into the shared repository
 

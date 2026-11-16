@@ -1,6 +1,6 @@
 # Score history
 
-Each round, a fresh, independent reviewer graded every chart and the suite as a whole against
+Each round, a fresh, independent AI reviewer (a new Claude session that hadn't seen earlier scores or reports) graded every chart and the suite as a whole against
 [`RUBRIC.md`](RUBRIC.md), without seeing earlier scores. The charts were then fixed based on the
 feedback, and the next round started. Full reports: `round_<n>.md` in this folder.
 
