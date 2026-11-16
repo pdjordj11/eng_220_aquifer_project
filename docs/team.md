@@ -29,7 +29,7 @@ I wrote the analysis code and made the project's charts. All of it lives in the 
 
 ### Meckrem Yousef
 
-*To be written.*
+I worked on developing and deploying the Streamlit app. A major focus was updating themes throughout the interface and refining how the graphs looked. I also worked on making the application mobile-accessible so that it could be easily read on phones, as well as gathering a few datasets to share with my team. Using built-in functions and config.toml, I adjusted specific aspects of the app to optimize it for mobile use and ensure the color scheme was more expressive of the project. Finally, I created the water estimator section of the app to give users an approximation of their total weekly water usage.
 
 ### Petar Djordjevic
 
