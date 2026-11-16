@@ -205,6 +205,8 @@
                 <li class="third-level"><a href="#15-aquifer_sensitivity_classes">15. aquifer_sensitivity_classes</a></li>
             <li class="second-level"><a href="#limitations">Limitations</a></li>
                 
+            <li class="second-level"><a href="#how-this-was-built">How this was built</a></li>
+                
             <li class="second-level"><a href="#how-the-charts-were-reviewed">How the charts were reviewed</a></li>
                 
     </ul>
@@ -212,7 +214,7 @@
         <div class="col-md-9" role="main">
 
 <h1 id="3-analysis-and-visualizations">3. Analysis and visualizations</h1>
-<p><strong>Lead:</strong> Micah Watkins</p>
+<p><strong>Lead:</strong> Micah Watkins · built with Claude, an AI coding tool (see <a href="#how-this-was-built">How this was built</a>)</p>
 <p>This stage answers the <a href="../#research-questions">research questions</a> with analysis code and charts. Every chart is a Python function in <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/analysis/charts.py"><code>analysis/charts.py</code></a>, and the same function feeds the Streamlit app, the report figures, and this page, so the numbers match everywhere.</p>
 <p>The short version: the data say a lot about groundwater near the Rio Grande (Rio Rancho to Cochiti) and very little about Cuba. Near Cuba there are only one-time well tests from 1957 to 1979, one recent well log, and ten visits to the Rio Puerco gage. That gap is itself one of the main results (research questions 3 and 5). See <a href="../findings/">Findings</a> for the labeled conclusions.</p>
 <h2 id="at-a-glance">At a glance</h2>
@@ -1349,8 +1351,10 @@ python -m analysis.write_docs          # refreshes the generated parts of this p
 <li><strong>Three proposal questions were dropped for lack of data:</strong> groundwater quality, acequias, and links between groundwater and surface water (see <a href="../data-collection/#not-collected">Not collected</a>). No geologic-region layer was collected either, so wells are grouped by nearest town and by the formation named in their aquifer tests.</li>
 <li><strong>Simple statistics.</strong> Trends and correlations assume independent years; with serial correlation they look more certain than they are. Results are screening-level, not a groundwater model.</li>
 </ul>
+<h2 id="how-this-was-built">How this was built</h2>
+<p>Micah used Claude, an AI coding tool from Anthropic, to write the analysis code, the charts, and the first drafts of this page. Micah decided what to build, made the design and scope calls (for example, which charts got pictograms, and cutting three charts when the research questions were narrowed), checked the charts and the app, and decided when the work was finished. Every number in a chart's title, caption, and findings is calculated from the data by the code, not typed in, so anyone can check it by rerunning the code.</p>
 <h2 id="how-the-charts-were-reviewed">How the charts were reviewed</h2>
-<p>Because the course didn't provide a chart rubric, the analysis wrote one from the project's own rules (the proposal, Dylan's plotting guide and briefs, James's conventions) plus standard data-visualization practice: <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/analysis/review/RUBRIC.md"><code>analysis/review/RUBRIC.md</code></a>. An independent reviewer graded every chart against it, the charts were fixed, and the cycle repeated. A final single review pass checked the pictograph versions. The full reports and the score history are in <a href="https://github.com/pdjordj11/eng_220_aquifer_project/tree/main/analysis/review"><code>analysis/review/</code></a>.</p></div>
+<p>Because the course didn't provide a chart rubric, Claude drafted one at Micah's request from the project's own rules (the proposal, Dylan's plotting guide and briefs, James's conventions) plus standard data-visualization practice: <a href="https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/analysis/review/RUBRIC.md"><code>analysis/review/RUBRIC.md</code></a>. A separate AI reviewer (a fresh Claude session that hadn't seen earlier scores) graded every chart against it, the charts were fixed, and the cycle repeated. Micah decided when to stop and which version to keep. A final single review pass checked the pictograph versions. The full reports and the score history are in <a href="https://github.com/pdjordj11/eng_220_aquifer_project/tree/main/analysis/review"><code>analysis/review/</code></a>.</p></div>
         
         
     </div>
