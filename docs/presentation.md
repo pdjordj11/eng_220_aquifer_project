@@ -6,14 +6,14 @@ The team presents the project with one slide deck, both in a recorded team video
 
 ## Slides
 
-The slides are a working draft and will be updated as the team fills them in. The team finishes them by Sat, Nov 14.
+The slides and the team video were finished on Nov 15.
 
 - [View the slides (PDF)](files/beneath_the_mesa_slides.pdf)
-- [Download the slides (PowerPoint)](files/beneath_the_mesa_slides.pptx)
+- [Download the slides (PowerPoint, with the recordings)](https://github.com/pdjordj11/eng_220_aquifer_project/releases/latest) from the project's final release on GitHub
 
-To update them, save the new version over `docs/files/beneath_the_mesa_slides.pptx`. Then export the PDF from PowerPoint with **File → Export** as `docs/files/beneath_the_mesa_slides.pdf`. Don't use Print to PDF, which drops the links on the last slide. Keep both file names the same so the links on this page keep working.
+The PowerPoint and the video are too large to keep in the repository, since GitHub blocks files over 100 MB, so they're attached to the [final release](https://github.com/pdjordj11/eng_220_aquifer_project/releases/latest) instead.
 
-The Prime Minister submits the PowerPoint (.pptx) on Canvas by **12 PM on Mon, Nov 16**; late submissions get zero. Per the rubric, the first slide gives the project title and every member's full name, the results slides show the project's charts and outputs, and the last slide links to the datasets, the GitHub repository, and the Streamlit app.
+The PowerPoint and the team video are the team's final submission on Canvas, due **12 PM on Mon, Nov 16**. Per the rubric, the first slide gives the project title and every member's full name, the results slides show the project's charts and outputs, and the last slide links to the datasets, the GitHub repository, and the Streamlit app.
 
 ## Outline
 
@@ -38,7 +38,9 @@ The slides follow the course grading rubric: slides 1 and 2 are the two-minute e
 
 ## Video
 
-The Prime Minister submits one recorded video of the team's presentation on Canvas by **12 PM on Mon, Nov 16**. Petar presents every slide except the five team-contribution slides (8 to 12), where each member explains their own part. Everyone keeps their camera on while speaking, as the assignment requires; the circle in the bottom-right corner of each slide is where the camera goes. The team finishes recording and editing by Sat, Nov 14, and a link will be posted here when the video is complete.
+- [Download the team video (MP4)](https://github.com/pdjordj11/eng_220_aquifer_project/releases/latest) from the project's final release on GitHub
+
+The video is the team's recorded presentation. Petar presents every slide except the five team-contribution slides (8 to 12), where each member explains their own part. Everyone is on camera while speaking, as the assignment requires, in the circle in the bottom-right corner of each slide.
 
 ## In-class presentation
 

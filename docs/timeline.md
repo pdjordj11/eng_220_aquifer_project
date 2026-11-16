@@ -50,8 +50,9 @@ Hover over or tap a task to see its dates.
 - Water Estimator page, phone layout, and color theme added to the Streamlit app by Meckrem on Nov 12 (see [Streamlit app](streamlit-app.md))
 - Streamlit app finished by Meckrem on Nov 14: every page's charts grouped into tabs, legends folded into expandable sections, a phone-friendly layout on every page, a new color theme, and the Sandbox test page removed
 - Final report finished on Nov 15: the data cleaning section covers all six cleaned files, and the dashboard section describes the finished app with a screenshot (see [Final report](report.md))
+- Presentation slides and team video finished on Nov 15: Petar recorded every slide except the team-contribution slides, which each member recorded on camera (see [Presentation and video](presentation.md))
+- Final submission: the slides and team video go to Canvas by 12 PM on Mon, Nov 16, and the finished repository is published as the project's [final release](https://github.com/pdjordj11/eng_220_aquifer_project/releases/latest) on GitHub, with the PowerPoint and video attached
 
-*Upcoming:*
+*Still ahead:*
 
-- **Mon, Nov 16, 12 PM:** slides and team video submitted on Canvas
 - **Thu, Nov 19:** in-class presentation

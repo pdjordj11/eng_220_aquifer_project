@@ -6,7 +6,7 @@
 [![Open the live app](https://img.shields.io/badge/Open%20the%20live%20app-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://eng220aquiferproject.streamlit.app/)
 [![Documentation site](https://img.shields.io/badge/Documentation-site-1F6FEB?style=for-the-badge)](https://pdjordj11.github.io/eng_220_aquifer_project/)
 [![Final report](https://img.shields.io/badge/Final%20report-PDF-B30B00?style=for-the-badge)](https://pdjordj11.github.io/eng_220_aquifer_project/files/project_report.pdf)
-[![Slides](https://img.shields.io/badge/Slides-PDF-D35230?style=for-the-badge)](https://pdjordj11.github.io/eng_220_aquifer_project/files/beneath_the_mesa_slides.pdf)
+[![Slides and video](https://img.shields.io/badge/Slides%20%26%20video-Presentation-D35230?style=for-the-badge)](https://pdjordj11.github.io/eng_220_aquifer_project/presentation/)
 
 ## About the Project
 
