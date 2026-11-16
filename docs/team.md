@@ -17,7 +17,7 @@ Each member describes their own contributions here.
 
 ### Dylan Gonzales
 
-*To be written.*
+My primary contribution to our project was researching and evaluating groundwater resources in Cuba, New Mexico, and the surrounding region especially Sandoval County. I collected data and technical publications from reliable and trustworthy sources including the USGS, New Mexico bureau of Geology, and Office of the State Engineer to investigate groundwater levels, well characteristics, aquifer geology, and water-resource sustainability. I analyzed the relevance and limitations of each source in relation to our research questions and prepared seven research briefs summarizing their findings and potential applications. Additionally, I developed a guide to help my teammates organize, clean, and visualize the collected data. My work helped establish a technical foundation for the project, identify gaps in available information, and guide the team's analysis toward evidence-based conclusions.
 
 ### James Wauneka
 
