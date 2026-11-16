@@ -1,6 +1,7 @@
 # analysis/
 
-Analysis code and charts for the project (lead: Micah Watkins). Every chart in the Streamlit app,
+Analysis code and charts for the project (lead: Micah Watkins, who used Claude, an AI coding tool, to write the
+code). Every chart in the Streamlit app,
 the report, and the documentation site comes from a function in `charts.py`, so the numbers match
 everywhere. The full write-up, with every chart, is on the docs site's
 [Analysis and visualizations](../docs/analysis.md) page.

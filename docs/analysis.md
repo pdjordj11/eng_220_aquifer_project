@@ -1,6 +1,6 @@
 # 3. Analysis and visualizations
 
-**Lead:** Micah Watkins
+**Lead:** Micah Watkins · built with Claude, an AI coding tool (see [How this was built](#how-this-was-built))
 
 This stage answers the [research questions](index.md#research-questions) with analysis code and charts. Every chart is a Python function in [`analysis/charts.py`](https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/analysis/charts.py), and the same function feeds the Streamlit app, the report figures, and this page, so the numbers match everywhere.
 
@@ -586,6 +586,10 @@ Each section below is written from the chart itself, so it always matches the ap
 - **Three proposal questions were dropped for lack of data:** groundwater quality, acequias, and links between groundwater and surface water (see [Not collected](data-collection.md#not-collected)). No geologic-region layer was collected either, so wells are grouped by nearest town and by the formation named in their aquifer tests.
 - **Simple statistics.** Trends and correlations assume independent years; with serial correlation they look more certain than they are. Results are screening-level, not a groundwater model.
 
+## How this was built
+
+Micah used Claude, an AI coding tool from Anthropic, to write the analysis code, the charts, and the first drafts of this page. Micah decided what to build, made the design and scope calls (for example, which charts got pictograms, and cutting three charts when the research questions were narrowed), checked the charts and the app, and decided when the work was finished. Every number in a chart's title, caption, and findings is calculated from the data by the code, not typed in, so anyone can check it by rerunning the code.
+
 ## How the charts were reviewed
 
-Because the course didn't provide a chart rubric, the analysis wrote one from the project's own rules (the proposal, Dylan's plotting guide and briefs, James's conventions) plus standard data-visualization practice: [`analysis/review/RUBRIC.md`](https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/analysis/review/RUBRIC.md). An independent reviewer graded every chart against it, the charts were fixed, and the cycle repeated. A final single review pass checked the pictograph versions. The full reports and the score history are in [`analysis/review/`](https://github.com/pdjordj11/eng_220_aquifer_project/tree/main/analysis/review).
+Because the course didn't provide a chart rubric, Claude drafted one at Micah's request from the project's own rules (the proposal, Dylan's plotting guide and briefs, James's conventions) plus standard data-visualization practice: [`analysis/review/RUBRIC.md`](https://github.com/pdjordj11/eng_220_aquifer_project/blob/main/analysis/review/RUBRIC.md). A separate AI reviewer (a fresh Claude session that hadn't seen earlier scores) graded every chart against it, the charts were fixed, and the cycle repeated. Micah decided when to stop and which version to keep. A final single review pass checked the pictograph versions. The full reports and the score history are in [`analysis/review/`](https://github.com/pdjordj11/eng_220_aquifer_project/tree/main/analysis/review).
